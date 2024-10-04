@@ -1,2 +1,2 @@
 # PHP
-Los de revidor son los buenos
+Los de sevidor son los buenos
