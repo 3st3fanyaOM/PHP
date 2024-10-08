@@ -10,9 +10,11 @@
             $nombre = $_REQUEST['nombre'];
             $apellidos = $_REQUEST['apellidos'];
             $edad=$_REQUEST['edad'];
-            echo $nombre, '<br>';
-            echo $apellidos, '<br>';
-            echo $edad, '<br>';
+            $curso=$_REQUEST['curso'];
+            echo "Nombre: ".$nombre.'<br>';
+            echo "Apellidos: ".$apellidos.'<br>';
+            echo "Edad: ".$edad.'<br>';
+            echo "Curso: ".$curso.'<br>';
     ?>
 </body>
 </html>

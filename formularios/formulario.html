@@ -1,21 +1,25 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
+  </head>
+  <body>
+    <form action="otro.php" method="POST">
+      <p>Nombre:</p>
+      <input type="text" name="nombre" />
+      <p>Apellidos:</p>
+      <input type="text" name="apellidos" />
+      <p>Edad:</p>
+      <input type="number" name="edad" /><br />
+      <p>Curso:</p>
+      <input type="radio" id="idPrimero" name="curso" value="1º" />
+      <label for="primero">1º</label><br />
+      <input type="radio" id="idSegundo" name="curso" value="2º" />
+      <label for="segundo">2º</label><br /><br />
 
-<form action="otro.php" method="POST" >
-    <p>Nombre:</p>
-    <input type="text" name="nombre">
-    <p>Apellidos:</p>
-    <input type="text" name="apellidos">
-    <p>Edad:</p>
-    <input type="number" name="edad"><br>
-    <input type="submit" name="Enviar">
-</form>
-
-</body>
+      <input type="submit" name="Enviar" /><br />
+    </form>
+  </body>
 </html>
