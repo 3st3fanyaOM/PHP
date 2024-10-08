@@ -12,7 +12,7 @@
 <?php
     $radio = 4;
     $circunferencia = 2*3.14*$radio;
-    $area= 3.14 * (4**2);
+    $area= 3.14 * ($radio**2);
 
     echo "Circunferencia: ".$circunferencia."<br>";
     echo "Area: ".$area;
