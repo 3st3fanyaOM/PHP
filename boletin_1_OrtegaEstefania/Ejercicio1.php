@@ -20,7 +20,7 @@
     echo "Apellido 1: ".$apellido1."<br>";
     echo "Apellido 2: ".$apellido2."<br>";
     echo "Curso: ".$curso."<br>";
-    echo "Foto:: ".$foto."<br>";
+    echo "Foto: <br><img style='width:100px;height:auto;'src='foto.jpg'>";
 ?>
 </body>
 </html>
