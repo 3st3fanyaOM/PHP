@@ -19,9 +19,9 @@ Pinta en pantalla el tipo de variable
     $entero = 123456789012345678;
     $variable = NULL;
     
-    echo var_dump($cadena);
-    echo var_dump($entero);
-    echo var_dump($variable);
+    echo var_dump($cadena)."<br>";
+    echo var_dump($entero)."<br>";
+    echo var_dump($variable)."<br>";
 ?>
 </body>
 </html>

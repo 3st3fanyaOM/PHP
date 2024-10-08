@@ -14,7 +14,7 @@
     $circunferencia = 2*3.14*$radio;
     $area= 3.14 * (4**2);
 
-    echo "Circunferencia: ".$circunferencia;
+    echo "Circunferencia: ".$circunferencia."<br>";
     echo "Area: ".$area;
 
 ?>

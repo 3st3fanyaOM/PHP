@@ -16,11 +16,11 @@
     $curso = "2DAW";
     $foto = "foto.jpg";
     
-    echo $nombre;
-    echo $apellido1;
-    echo $apellido2;
-    echo $curso;
-    echo $foto;
+    echo "Nombre: ".$nombre."<br>";
+    echo "Apellido 1: ".$apellido1."<br>";
+    echo "Apellido 2: ".$apellido2."<br>";
+    echo "Curso: ".$curso."<br>";
+    echo "Foto:: ".$foto."<br>";
 ?>
 </body>
 </html>

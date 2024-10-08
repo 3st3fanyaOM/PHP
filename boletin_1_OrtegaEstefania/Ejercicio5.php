@@ -17,10 +17,10 @@
     Creado por: Estefania Ortega-->
 <?php
     $num = 8;
-    $num + 2;
-    $num - 2;
-    $num * 5;
-    $num / 3;
+    $num += 2;
+    $num -= 2;
+    $num *= 5;
+    $num /= 3;
     $num++;
     $num--;
 

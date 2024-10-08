@@ -17,10 +17,10 @@
     $multi = $num1 * $num2;
     $divi = $num1/$num2;
 
-    echo "Suma de  ".$num1." y ".$num2." = ".$suma;
-    echo "Resta de  ".$num1." y ".$num2." = ".$resta;
-    echo "Multiplicación de  ".$num1." y ".$num2." = ".$multi;
-    echo "División de  ".$num1." y ".$num2." = ".$divi;
+    echo "Suma de  ".$num1." y ".$num2." = ".$suma."<br>";
+    echo "Resta de  ".$num1." y ".$num2." = ".$resta."<br>";
+    echo "Multiplicación de  ".$num1." y ".$num2." = ".$multi."<br>";
+    echo "División de  ".$num1." y ".$num2." = ".$divi."<br>";
 ?>
 </body>
 </html>
