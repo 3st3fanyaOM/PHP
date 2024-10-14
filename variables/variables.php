@@ -25,6 +25,11 @@
     $cadena = (int) $variable; 
     //variable de sistema
     var_dump($_SERVER); //proporciona toda la info de sistema
+    __FILE__; //nombre del archivo actual
+    __LINE__; //linea del archivo
+
+    define("CONST","Estefania"); // definir una costante
+
     ?>
 </body>
 </html>
