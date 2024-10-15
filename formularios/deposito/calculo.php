@@ -13,9 +13,9 @@
     $caudal = $_REQUEST['caudal'];
 
     $volumen = PI * ($radio*$radio) * $h;
-    echo "Volumen : ".$volumen." cm2.\n";
+    echo "Volumen : ".$volumen." cm2.<br>";
     $litros = $volumen/1000;
-    echo "El depósito tiene ".$litros." litros.\n";
+    echo "El depósito tiene ".$litros." litros.<br>";
     $tiempo = $litros/$caudal;
     echo "Tardará en llenarse ".$tiempo." minutos.";
     ?>
