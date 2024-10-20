@@ -7,30 +7,34 @@
 </head>
 <body>
     <?php
-    echo "Tipo: ".$_REQUEST['tipo'].'<br>';
-    echo "Envase: ".$_REQUEST['envase'].'<br>';
-    echo "Cantidad: ".$_REQUEST['cantidad'].'<br>';
-    if (isset($_REQUEST['marca'])){
-        print "<p>Se requiere marca</p>";
+    $errores="";
+
+    if (trim($_REQUEST['marca'])=="")
+        $errores=$errores."<li>Se requiere marca</li>";
+    if (trim($_REQUEST['advertencia'])=="")
+        $errores=$errores."<li>Se requiere la advertencia sobre el abuso del consumo de alcohol</li>";
+    if (trim($_REQUEST['fecha'])=="")
+        $errores=$errores."<li>Se requiere fecha</li>";
+    if (!$_REQUEST['alergenos'])
+        $errores=$errores."<li>Es obligatorio incluir alérgenos</li>";
+
+    if($errores != ""){
+        print ("<p>No se ha insertado el producto debido a los siguientes errores:</p>\n");
+        print ("<ul>");
+        print ($errores);
+        print ("</ul>");
     } else {
-        print "<p>Marca: ".$_REQUEST['marca'].'<br>';
-       }
-    if (isset($_REQUEST['advertencia'])){
-        print "<p>Es obligatoria la advertencia sobre el abuso del consumo de alcohol</p>";
-    } else {
-        print "<p>Advertencia: ".$_REQUEST['advertencia'].'<br>';
-       }
-    if (isset($_REQUEST['marca'])){
-        print "<p>No ha introducido fecha</p>";
-    } else {
-        print "<p>Fecha caducidad: ".$_REQUEST['marca'].'<br>';
+        echo "Tipo: ".$_REQUEST['tipo'].'<br>';
+        echo "Envase: ".$_REQUEST['envase'].'<br>';
+        echo "Denominación: ".$_REQUEST['denominacion'].'<br>';
+        echo "Cantidad: ".$_REQUEST['cantidad'].'<br>';
+        echo "Marca: ".$_REQUEST['marca'].'<br>';
+        echo "Advertencia: ".$_REQUEST['advertencia'].'<br>';
+        echo "Fecha caducidad: ".$_REQUEST['fecha'].'<br>';
+        echo "Alérgenos: ".$_REQUEST['alergenos'].'<br>';
+        echo "Observaciones: ".$_REQUEST['observaciones'].'<br>';
     }
-    if (isset($_REQUEST['alergenos'])){
-        print "<p>Es obligatorio incluir alérgenos</p>";
-    } else {
-        print "<p>Alérgenos: ".$_REQUEST['alergenos'].'<br>';
-    }
-    echo "Observaciones: ".$_REQUEST['observaciones'].'<br>';
+    
     ?>
 </body>
 </html>
