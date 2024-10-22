@@ -12,7 +12,7 @@
   <body>
     <h1>Inserción de cervezas</h1>
     <div class="container">
-      <form action="registro.php" method="POST">
+      <form action="registro.php" method="POST" enctype="multipart/form-data">
         <h4>Introduzca los datos de la cerveza:</h4>
         <hr />
         <br />
@@ -34,7 +34,9 @@
           <option value="weisbier">Weisbier</option>
           <option value="witbier">Witbier</option>
         </select>
-        <br />
+        <br /><br />
+        <!-- imagen -->
+        <!-- <input type="file" name="imagen"> -->
         <!-- denominacion -->
         <label for="denominacion">Denominación del alimento;</label><br />
         <select name="denominacion" id="denominacion">
@@ -42,8 +44,8 @@
           <option value="tercio">Tercio</option>
           <option value="1/2litro">1/2 Litro</option>
           <option value="1litro">1 Litro</option>
-          <option value="lata">Lata</option>
-        </select>
+          <option value="lata">Lata</option></select
+        ><br /><br />
         <!-- envase -->
         <label for="envase">Tipo de envase:</label><br />
         <input type="radio" value="Botellin" id="botellin" name="envase" />
@@ -53,7 +55,7 @@
         <input type="radio" value="Lata" id="lata" name="envase" />
         <label for="lata">Lata</label>
         <input type="radio" value="Tercio" id="tercio" name="envase" />
-        <label for="tercio">Tercio</label><br />
+        <label for="tercio">Tercio</label><br /><br />
         <!-- cantidad -->
         <label for="cantidad">Cantidad:</label><br />
         <select name="cantidad" id="cantidad">
@@ -64,10 +66,10 @@
           <option value="2litros">2 Litros</option>
           <option value="barril">Barril 25 L</option>
         </select>
-        <br />
+        <br /><br />
         <!-- marca -->
         <label for="marca">Marca:</label>
-        <input type="text" id="marca" name="marca" /><br />
+        <input type="text" id="marca" name="marca" /><br /><br />
         <!-- advertencia -->
         <label for="advertencia"
           >Advertencia sobre el consumo del alcohol:</label
@@ -75,7 +77,11 @@
         <input type="text" id="advertencia" name="advertencia" /><br />
         <!-- caducidad -->
         <label for="fechacaducidad">Fecha de consumo preferente:</label>
-        <input type="date" id="fechacaducidad" name="fechacaducidad" /><br />
+        <input
+          type="date"
+          id="fechacaducidad"
+          name="fechacaducidad"
+        /><br /><br />
         <!-- alergenos -->
         <label for="alergenos">Alérgenos:</label><br />
         <label for="gluten">Gluten</label>
@@ -106,7 +112,7 @@
           id="sinalergenos"
           name="alergenos"
           value="Sin alérgenos"
-        /><br />
+        /><br /><br />
         <!-- observaciones -->
         <label for="observaciones">Observaciones:</label><br />
         <textarea
@@ -115,6 +121,9 @@
           style="width: 300px; height: 100px"
         ></textarea
         ><br /><br />
+        <!-- imagen -->
+        <label for="fichero">Fichero:</label><br /><br />
+        <input type="file" name="fichero" /><br /><br />
         <!-- insertar -->
         <input type="submit" value="Insertar Cerveza" /><br /><br />
       </form>
