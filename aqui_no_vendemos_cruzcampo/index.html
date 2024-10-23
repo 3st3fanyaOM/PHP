@@ -83,34 +83,40 @@
           name="fechacaducidad"
         /><br /><br />
         <!-- alergenos -->
-        <label for="alergenos">Alérgenos:</label><br />
-        <label for="gluten">Gluten</label>
-        <input type="checkbox" id="gluten" name="alergenos" value="Gluten" />
-        <label for="cacahuete">Cacahuete</label>
+        <p><label>Alérgenos:</label></p>
+        <br />
+        <label>Gluten</label>
+        <input type="checkbox" id="gluten" name="alergenos[]" value="Gluten" />
+        <label>Cacahuete</label>
         <input
           type="checkbox"
           id="cacahuete"
-          name="alergenos"
+          name="alergenos[]"
           value="Cacahuete"
         />
-        <label for="soja">Soja</label>
-        <input type="checkbox" id="soja" name="alergenos" value="Soja" />
-        <label for="lacteo">Lácteo</label>
-        <input type="checkbox" id="lacteo" name="alergenos" value="Lacteo" />
-        <label for="sulfitos">Sulfitos</label>
+        <label>Soja</label>
+        <input type="checkbox" id="soja" name="alergenos[]" value="Soja" />
+        <label>Lácteo</label>
+        <input type="checkbox" id="lacteo" name="alergenos[]" value="Lacteo" />
+        <label>Sulfitos</label>
         <input
           type="checkbox"
           id="sulfitos"
-          name="alergenos"
+          name="alergenos[]"
           value="Sulfitos"
         />
-        <label for="cascara">Frutos con Cáscara</label>
-        <input type="checkbox" id="cascara" name="alergenos" value="Cáscara" />
-        <label for="sinalergenos">Sin alérgenos</label>
+        <label>Frutos con Cáscara</label>
+        <input
+          type="checkbox"
+          id="cascara"
+          name="alergenos[]"
+          value="Cáscara"
+        />
+        <label>Sin alérgenos</label>
         <input
           type="checkbox"
           id="sinalergenos"
-          name="alergenos"
+          name="alergenos[]"
           value="Sin alérgenos"
         /><br /><br />
         <!-- observaciones -->
