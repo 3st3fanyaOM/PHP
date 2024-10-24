@@ -46,6 +46,40 @@
         echo "<br>";
         echo "Observaciones: ".$_REQUEST['observaciones'].'<br>';
     }
+    $msgError = array(
+        0 => 'El archivo de ha subido correctamente',
+        1 => 'Excede el tamaño máximo del sistema',
+        2 => 'Excede el tamaño máximo especificado',
+        3 => 'El archivo no se ha subido completamente',
+        4 => 'No se ha subido el archivo',
+        6 => 'La carpeta temporal no existe',
+        7 => 'Fallo al escribir en el disco',
+        8 => 'Una extensión PHP ha detenido la descarga',
+    );
+ 
+    if($_FILES["fichero"]["error"] > 0)
+    {
+        echo "Error: " . $msgError[$_FILES["fichero"]["error"]] . "<br />";
+    }
+    else
+    {
+        echo "Nombre original: " . $_FILES["fichero"]["name"] . "<br />";
+        echo "Tipo: " . $_FILES["fichero"]["type"] . "<br />";
+        echo "Tamaño: " . ceil($_FILES["fichero"]["size"] / 1024) . " Kb<br />";
+        echo "Nombre temporal: " . $_FILES["fichero"]["tmp_name"] . "<br />";
+    if(file_exists("upload/" . $_FILES["fichero"]["name"]))
+    {
+        echo $_FILES["fichero"]["name"] . " ya existe";
+    }
+    else
+    {
+        move_uploaded_file($_FILES["fichero"]["tmp_name"],
+            "upload/" . $_FILES["fichero"]["name"]);
+ 
+        echo "Almacenado en: " . "upload/" . $_FILES["fichero"]["name"];
+    }
+    }
+    print ("<p> [<a href= 'index.html'>Insertar otra cerveza</a>]</p>");
      
     ?>
 </body>
