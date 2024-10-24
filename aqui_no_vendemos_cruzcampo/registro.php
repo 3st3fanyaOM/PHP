@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -27,24 +28,24 @@
         print ("<p>No se ha insertado el producto debido a los siguientes errores:</p>\n");
         print ("<ul>$errores</ul>");
     } else {
-        echo "Tipo: ".$_REQUEST['tipo'].'<br>';
-        echo "Envase: ".$_REQUEST['envase'].'<br>';
-        echo "Denominación: ".$_REQUEST['denominacion'].'<br>';
-        echo "Cantidad: ".$_REQUEST['cantidad'].'<br>';
-        echo "Marca: ".$_REQUEST['marca'].'<br>';
-        echo "Advertencia: ".$_REQUEST['advertencia'].'<br>';
-        echo "Fecha caducidad: ".$_REQUEST['fechacaducidad'].'<br>';
+        print "Tipo: ".$_REQUEST['tipo'].'<br>';
+        print "Envase: ".$_REQUEST['envase'].'<br>';
+        print "Denominación: ".$_REQUEST['denominacion'].'<br>';
+        print "Cantidad: ".$_REQUEST['cantidad'].'<br>';
+        print "Marca: ".$_REQUEST['marca'].'<br>';
+        print "Advertencia: ".$_REQUEST['advertencia'].'<br>';
+        print "Fecha caducidad: ".$_REQUEST['fechacaducidad'].'<br>';
         $alergenos = $_REQUEST['alergenos']??[];
         if (!empty($alergenos)) {
-            echo "Alérgenos: ";
+            print "Alérgenos: ";
             foreach ($alergenos as $alergeno) {
-                echo htmlspecialchars($alergeno) . " ";
+                print htmlspecialchars($alergeno) . " ";
             }
         } else {
-            echo "No se han incluido alérgenos.<br>";
+            print "No se han incluido alérgenos.<br>";
         }
-        echo "<br>";
-        echo "Observaciones: ".$_REQUEST['observaciones'].'<br>';
+        print "<br>";
+        print "Observaciones: ".$_REQUEST['observaciones'].'<br>';
     }
     $msgError = array(
         0 => 'El archivo de ha subido correctamente',
@@ -59,24 +60,24 @@
  
     if($_FILES["fichero"]["error"] > 0)
     {
-        echo "Error: " . $msgError[$_FILES["fichero"]["error"]] . "<br />";
+        print "Error: " . $msgError[$_FILES["fichero"]["error"]] . "<br />";
     }
     else
     {
-        echo "Nombre original: " . $_FILES["fichero"]["name"] . "<br />";
-        echo "Tipo: " . $_FILES["fichero"]["type"] . "<br />";
-        echo "Tamaño: " . ceil($_FILES["fichero"]["size"] / 1024) . " Kb<br />";
-        echo "Nombre temporal: " . $_FILES["fichero"]["tmp_name"] . "<br />";
+        print "Nombre original: " . $_FILES["fichero"]["name"] . "<br />";
+        print "Tipo: " . $_FILES["fichero"]["type"] . "<br />";
+        print "Tamaño: " . ceil($_FILES["fichero"]["size"] / 1024) . " Kb<br />";
+        print "Nombre temporal: " . $_FILES["fichero"]["tmp_name"] . "<br />";
     if(file_exists("upload/" . $_FILES["fichero"]["name"]))
     {
-        echo $_FILES["fichero"]["name"] . " ya existe";
+        print $_FILES["fichero"]["name"] . " ya existe";
     }
     else
     {
         move_uploaded_file($_FILES["fichero"]["tmp_name"],
             "upload/" . $_FILES["fichero"]["name"]);
  
-        echo "Almacenado en: " . "upload/" . $_FILES["fichero"]["name"];
+        print "Almacenado en: " . "upload/" . $_FILES["fichero"]["name"];
     }
     }
     print ("<p> [<a href= 'index.html'>Insertar otra cerveza</a>]</p>");
