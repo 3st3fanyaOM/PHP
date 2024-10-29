@@ -2,13 +2,13 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8_unicode">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro</title>
 </head>
 <body>
     <?php
-
+    header("Content-Type: text/html; charset=UTF-8_encode");
     $errores="";
     error_reporting(0);
     if (trim($_REQUEST['marca']) === "") {
@@ -58,28 +58,36 @@
         8 => 'Una extensión PHP ha detenido la descarga',
     );
  
-    if($_FILES["fichero"]["error"] > 0)
+    if(($_FILES["foto"]["type"]!="gif") || ($_FILES["foto"]["type"]!="jpeg") ||($_FILES["foto"]["type"]!="jpg") || ($_FILES["foto"]["type"]!="png")){
+        print "<p>El formato no es un formato de imagen correcto.</p>";
+    }
+    else{
+        if($_FILES["foto"]["error"] > 0)
     {
-        print "Error: " . $msgError[$_FILES["fichero"]["error"]] . "<br />";
+        print "Error: " . $msgError[$_FILES["foto"]["error"]] . "<br />";
     }
     else
     {
-        print "Nombre original: " . $_FILES["fichero"]["name"] . "<br />";
-        print "Tipo: " . $_FILES["fichero"]["type"] . "<br />";
-        print "Tamaño: " . ceil($_FILES["fichero"]["size"] / 1024) . " Kb<br />";
-        print "Nombre temporal: " . $_FILES["fichero"]["tmp_name"] . "<br />";
-    if(file_exists("upload/" . $_FILES["fichero"]["name"]))
+        
+    if(file_exists("upload/" . $_FILES["foto"]["name"]))
     {
-        print $_FILES["fichero"]["name"] . " ya existe";
+        print $_FILES["foto"]["name"] . " ya existe";
     }
     else
     {
-        move_uploaded_file($_FILES["fichero"]["tmp_name"],
-            "upload/" . $_FILES["fichero"]["name"]);
+        move_uploaded_file($_FILES["foto"]["tmp_name"],
+            "upload/" . $_FILES["foto"]["name"]);
  
-        print "Almacenado en: " . "upload/" . $_FILES["fichero"]["name"];
+        print "Almacenado en: " . "upload/" . $_FILES["foto"]["name"];
+        print "<p><img src='upload/' ". $_FILES['foto']['name']."/></p>";
+        print "Nombre original: " . $_FILES["foto"]["name"] . "<br />";
+        print "Tipo: " . $_FILES["foto"]["type"] . "<br />";
+        print "Tamaño: " . ceil($_FILES["foto"]["size"] / 1024) . " Kb<br />";
+        print "Nombre temporal: " . $_FILES["foto"]["tmp_name"] . "<br />";
     }
     }
+    }
+    
     print ("<p> [<a href= 'index.html'>Insertar otra cerveza</a>]</p>");
      
     ?>

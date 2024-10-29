@@ -8,12 +8,29 @@
       rel="stylesheet"
       href="../aqui_no_vendemos_cruzcampo/styles/styles.css"
     />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+
+      body {
+        font-family: "Inter", sans-serif;
+      }
+      h1 {
+        font-weight: bold;
+        color: #053105;
+        text-align: center;
+      }
+      .formulario {
+        background-color: #f3d08f;
+        border: 1px solid #053105;
+        border-radius: 15px;
+      }
+    </style>
   </head>
   <body>
-    <h1>Inserción de cervezas</h1>
+    <h1>Inserci&oacute;n de cervezas</h1>
     <div class="container">
       <form action="registro.php" method="POST" enctype="multipart/form-data">
-        <fieldset>
+        <fieldset class="formulario">
           <h4>Introduzca los datos de la cerveza:</h4>
           <hr />
           <br />
@@ -39,7 +56,8 @@
           <!-- imagen -->
           <!-- <input type="file" name="imagen"> -->
           <!-- denominacion -->
-          <label for="denominacion">Denominación del alimento;</label><br />
+          <label for="denominacion">Denominaci&oacute;n del alimento:</label
+          ><br />
           <select name="denominacion" id="denominacion">
             <option value="botellin">Botellin</option>
             <option value="tercio">Tercio</option>
@@ -69,13 +87,13 @@
           </select>
           <br /><br />
           <!-- marca -->
-          <label for="marca">Marca:</label>
+          <label for="marca">Marca:</label><br />
           <input type="text" id="marca" name="marca" /><br /><br />
           <!-- advertencia -->
           <label for="advertencia"
             >Advertencia sobre el consumo del alcohol:</label
-          >
-          <input type="text" id="advertencia" name="advertencia" /><br />
+          ><br />
+          <input type="text" id="advertencia" name="advertencia" /><br /><br />
           <!-- caducidad -->
           <label for="fechacaducidad">Fecha de consumo preferente:</label>
           <input
@@ -84,7 +102,7 @@
             name="fechacaducidad"
           /><br /><br />
           <!-- alergenos -->
-          <p><label>Alérgenos:</label></p>
+          <p><label>Al&eacute;rgenos:</label></p>
           <br />
           <label>Gluten</label>
           <input
@@ -102,7 +120,7 @@
           />
           <label>Soja</label>
           <input type="checkbox" id="soja" name="alergenos[]" value="Soja" />
-          <label>Lácteo</label>
+          <label>L&aacute;cteo</label>
           <input
             type="checkbox"
             id="lacteo"
@@ -116,7 +134,7 @@
             name="alergenos[]"
             value="Sulfitos"
           />
-          <label>Frutos con Cáscara</label>
+          <label>Frutos con C&aacute;scara</label>
           <input
             type="checkbox"
             id="cascara"
@@ -139,8 +157,8 @@
           ></textarea
           ><br /><br />
           <!-- imagen -->
-          <label for="fichero">Fichero:</label><br /><br />
-          <input type="file" name="fichero" /><br /><br />
+          <label for="foto">Foto:</label><br /><br />
+          <input type="file" name="foto" /><br /><br />
         </fieldset>
         <!-- insertar -->
         <input type="submit" value="Insertar Cerveza" /><br /><br />
