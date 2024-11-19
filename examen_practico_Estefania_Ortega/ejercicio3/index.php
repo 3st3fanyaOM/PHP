@@ -8,10 +8,10 @@
   <body>
     <h1>MENU</h1><hr>
     <ol>
-        <li><a href="registro.php">Crear usuario</a></li>
-        <li><a href="">Listar usuarios</a></li>
-        <li><a href="">Borrar un usuario</a></li>
-        <li><a href="">Modificar un usuario</a></li>
+        <li><a href="formulario.php">Crear usuario</a></li>
+        <li><a href="listar.php">Listar usuarios</a></li>
+        <li><a href="borrar.php">Borrar un usuario</a></li>
+        <li><a href="modificar_id.php">Modificar un usuario</a></li>
     </ol>
   </body>
 </html>
