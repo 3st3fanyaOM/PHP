@@ -31,6 +31,7 @@ if ($errores != "") {
     echo "<ul>$errores</ul>";
 } else {
     // Mostrar los datos del formulario
+    echo "<p class='success'>Datos insertados correctamente:</p>";
     echo "Tipo: " . htmlspecialchars($_REQUEST['tipo']) . '<br>';
     echo "Envase: " . htmlspecialchars($_REQUEST['envase']) . '<br>';
     echo "Denominación: " . htmlspecialchars($_REQUEST['denominacion']) . '<br>';
@@ -55,6 +56,7 @@ if ($errores != "") {
 }
 
 // Mensajes de error para la carga de archivos
+$uploadDir = "upload/";
 $msgError = array(
     0 => 'El archivo ha subido correctamente',
     1 => 'Excede el tamaño máximo del sistema',
@@ -68,30 +70,31 @@ $msgError = array(
 
 // Validación del tipo de imagen
 if ($_FILES["foto"]["error"] == 0) {
-    if (!in_array($_FILES["foto"]["type"], ["image/gif", "image/jpeg", "image/jpg", "image/png"])) {
+    $allowedTypes = ["image/gif", "image/jpeg", "image/jpg", "image/png"];
+    $maxSize = 2 * 1024 * 1024; // 2MB
+
+    if (!in_array($_FILES["foto"]["type"], $allowedTypes)) {
         echo "<p>El formato no es un formato de imagen correcto.</p>";
-    } else {
-        // Verificar si hay un error con el archivo
-        if ($_FILES["foto"]["error"] > 0) {
-            echo "Error: " . $msgError[$_FILES["foto"]["error"]] . "<br />";
+        } elseif ($_FILES["foto"]["size"] > $maxSize) {
+        echo "<p class='error'>El archivo excede el tamaño máximo permitido de 2MB.</p>";
         } else {
-            // Verificar si el archivo ya existe en el servidor
-            if (file_exists("upload/" . $_FILES["foto"]["name"])) {
-                echo $_FILES["foto"]["name"] . " ya existe";
+            if (!is_dir($uploadDir)) mkdir($uploadDir, 0777, true);
+
+            $uniqueName = uniqid() . "_" . basename($_FILES["foto"]["name"]);
+            $targetFile = $uploadDir . $uniqueName;
+    
+            if (move_uploaded_file($_FILES["foto"]["tmp_name"], $targetFile)) {
+                echo "<p class='success'>Archivo subido correctamente:</p>";
+                echo "<img src='$targetFile' alt='Imagen subida'>";
+                echo "<br><strong>Nombre original:</strong> " . htmlspecialchars($_FILES["foto"]["name"]);
+                echo "<br><strong>Tipo:</strong> " . htmlspecialchars($_FILES["foto"]["type"]);
+                echo "<br><strong>Tamaño:</strong> " . ceil($_FILES["foto"]["size"] / 1024) . " KB";
             } else {
-                // Mover el archivo subido a la carpeta "upload"
-                move_uploaded_file($_FILES["foto"]["tmp_name"], "upload/" . $_FILES["foto"]["name"]);
-                echo "Almacenado en: " . "upload/" . $_FILES["foto"]["name"];
-                echo "<p><img src='upload/" . $_FILES['foto']['name'] . "' /></p>";
-                echo "Nombre original: " . $_FILES["foto"]["name"] . "<br />";
-                echo "Tipo: " . $_FILES["foto"]["type"] . "<br />";
-                echo "Tamaño: " . ceil($_FILES["foto"]["size"] / 1024) . " Kb<br />";
-                echo "Nombre temporal: " . $_FILES["foto"]["tmp_name"] . "<br />";
+                echo "<p class='error'>Error al mover el archivo al servidor.</p>";
             }
-        }
     }
 } else {
-    echo "<p>No se ha subido el archivo.</p>";
+    echo "<p class='error'>" . $msgError[$_FILES["foto"]["error"]] . "</p>";
 }
 
 // Enlace para insertar otra cerveza
