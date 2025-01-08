@@ -1,7 +1,7 @@
 <?php
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     // Conexión a la base de datos
-    $conn = mysqli_connect("localhost:3307", "root", "", "cervezas");
+    $conn = mysqli_connect("localhost:3307", "root", "", "daw");
     if ($conn->connect_error) {
         die("Error de conexión: " . $conn->connect_error);
     }
