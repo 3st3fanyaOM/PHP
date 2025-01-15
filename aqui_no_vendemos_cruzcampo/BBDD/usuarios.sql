@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3307
--- Tiempo de generación: 15-01-2025 a las 20:25:35
+-- Tiempo de generación: 15-01-2025 a las 20:32:12
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -24,21 +24,15 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `cervezas`
+-- Estructura de tabla para la tabla `usuarios`
 --
 
-CREATE TABLE `cervezas` (
-  `id_cerveza` int(3) NOT NULL,
-  `denominacion` varchar(100) NOT NULL,
-  `marca` varchar(100) NOT NULL,
-  `tipo` varchar(100) NOT NULL,
-  `formato` varchar(100) NOT NULL,
-  `tamanio` varchar(100) NOT NULL,
-  `alergenos` varchar(100) NOT NULL,
-  `fecha` date NOT NULL,
-  `foto` varchar(200) NOT NULL,
-  `precio` int(50) NOT NULL,
-  `observaciones` varchar(200) NOT NULL
+CREATE TABLE `usuarios` (
+  `id_usuario` int(3) NOT NULL,
+  `correo` varchar(100) NOT NULL,
+  `password` varchar(50) NOT NULL,
+  `edad` int(3) NOT NULL,
+  `perfil` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
 --
@@ -46,10 +40,10 @@ CREATE TABLE `cervezas` (
 --
 
 --
--- Indices de la tabla `cervezas`
+-- Indices de la tabla `usuarios`
 --
-ALTER TABLE `cervezas`
-  ADD PRIMARY KEY (`id_cerveza`);
+ALTER TABLE `usuarios`
+  ADD PRIMARY KEY (`id_usuario`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
