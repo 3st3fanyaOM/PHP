@@ -6,7 +6,7 @@
     <title>Prohibido Cruzcampo</title>
     <link
       rel="stylesheet"
-      href="../aqui_no_vendemos_cruzcampo/styles/styles.css"
+      href="../aqui_no_vendemos_cruzcampo/css/styles.css"
     />
   </head>
   <body>
@@ -17,37 +17,43 @@
           <h4>Introduzca los datos de la cerveza:</h4>
           <hr />
           <br />
+          <!-- denominacion -->
+          <label for="denominacion">Denominaci&oacute;n:</label><br />
+          <input type="text" id="denominacion" name="denominacion" /><br /><br />
+           <!-- marca -->
+           <label for="marca">Marca:</label
+            ><br />
+            <select name="marca" id="marca">
+              <option value="Heineken">Heineken</option>
+              <option value="Mahou">Mahou</option>
+              <option value="DAM">1/2 Litro</option>
+              <option value="Estrella Galicia">Estrella Galicia</option>
+              <option value="Cruzcampo">Cruzcampo</option>
+              <option value="Alhambra">Alhambra</option></select
+            ><br /><br />
           <!-- tipo -->
           <label for="tipo">Tipo de cerveza:</label><br />
           <select id="tipo" name="tipo">
             <option value="lager">Lager</option>
-            <option value="plager">Pale Lager</option>
-            <option value="marzen">Marzen Block</option>
-            <option value="ale">Ale</option>
             <option value="pale ale">Pale Ale</option>
-            <option value="ipa">Ipa</option>
-            <option value="bitter">Bitter</option>
-            <option value="brown ale">Brown Ale</option>
-            <option value="poter">Poter</option>
-            <option value="stout">Stout</option>
-            <option value="transpenses">Transpenses</option>
+            <option value="cerveza negra">Cerveza Negra</option>
             <option value="abadia">Abadia</option>
-            <option value="weisbier">Weisbier</option>
-            <option value="witbier">Witbier</option>
+            <option value="rubia">Rubia</option>
           </select>
           <br /><br />
+           <!-- formato -->
+           <label for="formato">Formato:</label
+            ><br />
+            <select name="denominacion" id="denominacion">
+              <option value="lata">Lata</option>
+              <option value="botella">Botella</option>
+              <option value="pack">Pack</option>
+              <option value="1litro">1 Litro</option>
+              <option value="lata">Lata</option></select
+            ><br /><br />
           <!-- imagen -->
           <!-- <input type="file" name="imagen"> -->
-          <!-- denominacion -->
-          <label for="denominacion">Denominaci&oacute;n del alimento:</label
-          ><br />
-          <select name="denominacion" id="denominacion">
-            <option value="botellin">Botellin</option>
-            <option value="tercio">Tercio</option>
-            <option value="1/2litro">1/2 Litro</option>
-            <option value="1litro">1 Litro</option>
-            <option value="lata">Lata</option></select
-          ><br /><br />
+          
           <!-- envase -->
           <label for="envase">Tipo de envase:</label><br />
           <input type="radio" value="Botellin" id="botellin" name="envase" />
@@ -69,9 +75,7 @@
             <option value="barril">Barril 25 L</option>
           </select>
           <br /><br />
-          <!-- marca -->
-          <label for="marca">Marca:</label><br />
-          <input type="text" id="marca" name="marca" /><br /><br />
+          
           <!-- advertencia -->
           <label for="advertencia"
             >Advertencia sobre el consumo del alcohol:</label
