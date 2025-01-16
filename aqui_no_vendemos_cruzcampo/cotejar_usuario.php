@@ -19,11 +19,11 @@ if (mysqli_connect_errno()) {
 // Comprobar si el formulario fue enviado
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Recoger los datos del formulario
-    $email = $_POST['email'];
+    $email = $_POST['mail'];
     $input_password = $_POST['password'];
 
     // Consulta para obtener el hash de la contraseña desde la base de datos
-    $sql = "SELECT password FROM usuarios WHERE email = ?";
+    $sql = "SELECT password FROM usuarios WHERE correo = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("s", $email);
     $stmt->execute();
