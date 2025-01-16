@@ -1,5 +1,5 @@
 <?php
-// Iniciar sesión (si necesitas usar sesiones para el inicio de sesión)
+// Iniciar sesión
 session_start();
 
 // Conectar a la base de datos
@@ -23,7 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $input_password = $_POST['password'];
 
     // Consulta para obtener el hash de la contraseña desde la base de datos
-    $sql = "SELECT password FROM usuarios_registro WHERE email = ?";
+    $sql = "SELECT password FROM usuarios WHERE email = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("s", $email);
     $stmt->execute();

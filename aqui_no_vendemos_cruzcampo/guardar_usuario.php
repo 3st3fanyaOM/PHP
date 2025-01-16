@@ -54,7 +54,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Ejecutar la consulta
         if ($conn->query($sql) === TRUE) {
             echo "Usuario registrado con éxito";
-            //header("Location: success.php"); // Redirigir a una página de éxito si se registra correctamente
             exit();
         } else {
             echo "Error: " . $conn->error;
