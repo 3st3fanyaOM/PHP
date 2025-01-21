@@ -1,41 +1,88 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tienda de cervezas</title>
-    <!-- <link rel="stylesheet" href="./css/styles.css" /> -->
-    <link rel="stylesheet" href="./styles/styles.css" />
+    <title>Cervecera</title>
+    <link rel="stylesheet" href="./styles/home.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   </head>
   <body>
     <header>
-      <h1>Tienda de cervezas</h1>
+      <nav>
+        <div class="logo">
+          <img src="" alt="" />
+        </div>
+        <div class="search-box">
+          <input type="text" id="search" placeholder="Buscar cerveza" />
+          <button>
+            <i class="fas fa search"></i>
+          </button>
+        </div>
+        <div class="nav-links">
+            <a href="login.html" class="login-btn">
+                <i class="fas fa-user"></i> Inicia Sesión
+            </a>
+        </div>
+      </nav>
     </header>
     <main>
-      <div class="login-form">
-        <h2>Login</h2>
-        <form action="login.php" method="POST">
-          <div class="form-group">
-            <label for="mail">Correo electrónico</label>
-            <input type="email" id="mail" name="mail" required />
-          </div>
-          <div class="form-group">
-            <label for="password">Password</label>
-            <input type="password" id="password" name="password" required />
-          </div>
-          <button type="submit" class="btn">Login</button>
-          <a class="enlace-registro" href="registro_usuario.html"
-            >¿No tienes cuenta? Pulsa aqui.</a
-          >
-        </form>
-      </div>
+        <div class="products">
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="" alt="">
+                </div>
+                <h3 class="product-title"></h3>
+                <p class="product-price"></p>
+                <p>Descripcion</p>
+                <button class="add-to-cart">Añadir al carrito</button>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="" alt="">
+                </div>
+                <h3 class="product-title"></h3>
+                <p class="product-price"></p>
+                <p>Descripcion</p>
+                <button class="add-to-cart">Añadir al carrito</button>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="" alt="">
+                </div>
+                <h3 class="product-title"></h3>
+                <p class="product-price"></p>
+                <p>Descripcion</p>
+                <button class="add-to-cart">Añadir al carrito</button>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="" alt="">
+                </div>
+                <h3 class="product-title"></h3>
+                <p class="product-price"></p>
+                <p>Descripcion</p>
+                <button class="add-to-cart">Añadir al carrito</button>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="" alt="">
+                </div>
+                <h3 class="product-title"></h3>
+                <p class="product-price"></p>
+                <p>Descripcion</p>
+                <button class="add-to-cart">Añadir al carrito</button>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="" alt="">
+                </div>
+                <h3 class="product-title"></h3>
+                <p class="product-price"></p>
+                <p>Descripcion</p>
+                <button class="add-to-cart">Añadir al carrito</button>
+            </div>
+        </div>
     </main>
-    <footer>
-      <p>
-        © Tienda de cervezas. Todos los derechos reservados |
-        <a href="#" target="_blank">Aviso Legal</a> |
-        <a href="#" target="_blank">Buzón de sugerencias</a>
-      </p>
-    </footer>
   </body>
 </html>
