@@ -38,9 +38,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (password_verify($input_password, $hashed_password)) {
             // Contraseña correcta, redirigir a una página de éxito o dashboard
             $_SESSION['email'] = $email; // Guardar sesión si es necesario
-            echo "¡Inicio de sesión exitoso!";
-            // Redirigir a una página de bienvenida o panel de usuario, por ejemplo:
-            // header("Location: dashboard.php");
+            $_SESSION['perfil'] = $usuario['perfil']; // Guardar perfil
+
+            // Redirigir según el perfil
+            if ($usuario['perfil'] === 'admin') {
+                header("Location: menu_admin.php"); // Página de administrador
+            } elseif ($usuario['perfil'] === 'user') {
+                header("Location: menu_usuario.php"); // Página de usuario
+            } else {
+                echo "Perfil desconocido. Comunícate con el administrador.";
+            }
+            exit(); 
         } else {
             // Contraseña incorrecta
             echo "Contraseña incorrecta. Intenta nuevamente.";
