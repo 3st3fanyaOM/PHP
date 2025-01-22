@@ -1,5 +1,5 @@
 :root {
-  --primary-color: #ffd700;
+  --primary-color: #004aad;
   --secondary-color: #333;
   --background-color: #f5f5f5;
 }
@@ -192,4 +192,15 @@ main {
   border-radius: 4px;
   cursor: pointer;
   font-weight: bold;
+}
+
+footer {
+  background-color: #696161;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  font-size: 0.9rem;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
 }

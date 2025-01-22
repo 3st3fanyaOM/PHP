@@ -25,11 +25,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $password = mysqli_real_escape_string($conn, $_POST['password']);
     $age = (int) $_POST['age'];
 
-    // usu_validoación: Ningún campo debe estar vacío
+    // usu_validación: Ningún campo debe estar vacío
     $usu_valido = true;
 
     if (empty($email)) {
-        $email_error = "El email electrónico es obligatorio.";
+        $email_error = "El email es obligatorio.";
         $usu_valido = false;
     }
 
@@ -39,7 +39,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     if (empty($age)) {
-        $age_error = "La age es obligatoria.";
+        $age_error = "La edad es obligatoria.";
         $usu_valido = false;
     }
 
@@ -48,13 +48,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $password_cifrado = password_hash($password, PASSWORD_BCRYPT);
 
         // Preparar la consulta SQL
-        $sql = "INSERT INTO usuarios (correo, password, edad, perfil) 
-                VALUES ('$email', '$password_cifrado', $age, 'usuario')";
+        $sql = "INSERT INTO usuarios (correo, password, edad, perfil, password_sin) 
+                VALUES ('$email', '$password_cifrado', $age, 'usuario', '$password')";
 
         // Ejecutar la consulta
         if ($conn->query($sql) === TRUE) {
             echo "Usuario registrado con éxito";
-            exit();
+            echo "<br><p> [<a href='index.html'>Volver al catálogo</a>]</p><br>";
         } else {
             echo "Error: " . $conn->error;
         }
