@@ -45,7 +45,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($usu_valido) {
         // Cifrar la contraseña
-        $password_cifrado = password_hash($password, PASSWORD_BCRYPT);
+        $password_cifrado = password_hash($password, PASSWORD_DEFAULT);
 
         // Preparar la consulta SQL
         $sql = "INSERT INTO usuarios (correo, password, edad, perfil, password_sin) 

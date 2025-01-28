@@ -42,7 +42,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
          echo "Hash almacenado en la base de datos: " . $hashed_password . "<br>";
         
         // Verificar si la contraseña proporcionada coincide con el hash almacenado
-        if (password_verify(trim($input_password), trim($hashed_password)) {
+        if (password_verify($input_password, $hashed_password)) {
 
             // Contraseña correcta, redirigir a una página de éxito o dashboard
             echo "Contraseña verificada correctamente. Redirigiendo...<br>";
@@ -51,9 +51,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION['perfil'] = $perfil; // Guardar perfil
 
             // Redirigir según el perfil
-            if ($perfil['perfil'] === 'administrador') {
+            if ($perfil === 'administrador') {
                 header("Location: menu_admin.html"); // Página de administrador
-            } elseif ($perfil['perfil'] === 'usuario') {
+            } elseif ($perfil=== 'usuario') {
                 header("Location: index.html"); // Página de usuario
             } else {
                 echo "Perfil desconocido. Comunícate con el administrador.";
