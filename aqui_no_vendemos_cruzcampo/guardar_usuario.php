@@ -1,17 +1,6 @@
 <?php
 // Conectar a la base de datos
-$servername = "localhost";
-$username = "root";
-$password = ""; 
-$dbname = "daw";
-
-$conn = mysqli_connect("localhost:3307", "root", "", "daw");
-
-// Verificar la conexión
-if (mysqli_connect_errno()) {
-    echo "No se ha conectado a la base de datos: " . mysqli_connect_error();
-    exit(); 
-}
+include("conexion.php");
 
 // Variables para los mensajes de error
 $email_error = $password_error = $age_error = "";
@@ -45,7 +34,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($usu_valido) {
         // Cifrar la contraseña
-        $password_cifrado = password_hash($password, PASSWORD_DEFAULT);
+        $passwd=md5($password);
+        $password_cifrado = crypt($password,$passwd);
 
         // Preparar la consulta SQL
         $sql = "INSERT INTO usuarios (correo, password, edad, perfil, password_sin) 

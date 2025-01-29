@@ -12,17 +12,61 @@ $errores = "";
 error_reporting(0);
 
 // Validación de los campos del formulario
+if (trim($_REQUEST['denominacion']) === "") {
+    $errores .= "<li>Se requiere denominacion</li>";
+}
 if (trim($_REQUEST['marca']) === "") {
     $errores .= "<li>Se requiere marca</li>";
 }
-if (trim($_REQUEST['advertencia']) === "") {
-    $errores .= "<li>Se requiere la advertencia sobre el abuso del consumo de alcohol</li>";
+if (trim($_REQUEST['tipo']) === "") {
+    $errores .= "<li>Se requiere tipo</li>";
 }
-if (trim($_REQUEST['fechacaducidad']) === "") {
-    $errores .= "<li>Se requiere fecha</li>";
+if (trim($_REQUEST['formato']) === "") {
+    $errores .= "<li>Se requiere formato</li>";
 }
-if (empty($_REQUEST['alergenos'])) {
-    $errores .= "<li>Es obligatorio incluir alérgenos</li>";
+if (empty($_REQUEST['tamanio'])) {
+    $errores .= "<li>Es obligatorio incluir tamaño</li>";
+}
+$alergenos = $_REQUEST["alergenos"] ?? [];
+if (empty($alergenos)) {
+    $errores[] = "Debe seleccionar al menos un alérgeno.";
+} else {
+    $alergenos = array_map('htmlspecialchars', $alergenos); // Limpieza básica
+    $alergenos = implode(", ", $alergenos); // Convertir en texto para almacenar
+}
+$fechacaducidad = $_REQUEST["fechacaducidad"] ?? '';
+if (!preg_match("/^\d{4}-\d{2}-\d{2}$/", $fechacaducidad)) {
+    $errores[] = "El campo 'Fecha de caducidad' es obligatorio y debe ser una fecha válida (YYYY-MM-DD).";
+}
+
+// Validar archivo "foto" (obligatorio)
+    $foto = "";
+    if (isset($_FILES["foto"]) && $_FILES["foto"]["error"] === UPLOAD_ERR_OK) {
+        $directorioUploads = "uploads/";
+        $nombreArchivo = basename($_FILES["foto"]["name"]);
+        $rutaArchivo = $directorioUploads . $nombreArchivo;
+
+        // Validar tipo de archivo
+        $tipoArchivo = mime_content_type($_FILES["foto"]["tmp_name"]);
+        $formatosPermitidos = ["image/jpeg", "image/png", "image/gif"];
+        if (!in_array($tipoArchivo, $formatosPermitidos)) {
+            $errores[] = "El archivo subido debe ser una imagen válida (JPG, PNG o GIF).";
+        } else {
+            // Mover archivo
+            if (!move_uploaded_file($_FILES["foto"]["tmp_name"], $rutaArchivo)) {
+                $errores[] = "No se pudo guardar el archivo de imagen.";
+            } else {
+                $foto = $rutaArchivo;
+            }
+        }
+    } else {
+        $errores[] = "El campo 'Archivo' es obligatorio.";
+    }
+if (trim($_REQUEST['precio']) === "") {
+    $errores .= "<li>Se requiere precio</li>";
+}
+if (trim($_REQUEST['observaciones']) === "") {
+    $errores .= "<li>Se requieren observaciones</li>";
 }
 
 // Si existen errores, mostrar el listado de errores
@@ -32,13 +76,14 @@ if ($errores != "") {
 } else {
     // Mostrar los datos del formulario
     echo "<p class='success'>Datos insertados correctamente:</p>";
-    echo "Tipo: " . htmlspecialchars($_REQUEST['tipo']) . '<br>';
-    echo "Envase: " . htmlspecialchars($_REQUEST['envase']) . '<br>';
     echo "Denominación: " . htmlspecialchars($_REQUEST['denominacion']) . '<br>';
-    echo "Cantidad: " . htmlspecialchars($_REQUEST['cantidad']) . '<br>';
     echo "Marca: " . htmlspecialchars($_REQUEST['marca']) . '<br>';
-    echo "Advertencia: " . htmlspecialchars($_REQUEST['advertencia']) . '<br>';
+    echo "Tipo: " . htmlspecialchars($_REQUEST['tipo']) . '<br>';
+    echo "Formato: " . htmlspecialchars($_REQUEST['formato']) . '<br>';
     echo "Fecha caducidad: " . htmlspecialchars($_REQUEST['fechacaducidad']) . '<br>';
+    echo "Foto: " . htmlspecialchars($_REQUEST['foto']) . '<br>';
+    echo "Precio: " . htmlspecialchars($_REQUEST['precio']) . '<br>';
+
 
     // Mostrar los alérgenos seleccionados
     $alergenos = $_REQUEST['alergenos'] ?? [];
@@ -97,6 +142,20 @@ if ($_FILES["foto"]["error"] == 0) {
     echo "<p class='error'>" . $msgError[$_FILES["foto"]["error"]] . "</p>";
 }
 
+// Inserción en la base de datos
+$sql = "INSERT INTO cervezas (denominacion, marca, tipo, formato, tamanio, alergenos, fecha, foto, precio, observaciones)
+VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("ssssssssss", $denominacion, $marca, $tipo, $formato, $tamanio, $alergenos, $fechacaducidad, $foto, $precio, $observaciones);
+
+if ($stmt->execute()) {
+echo "Cerveza insertada correctamente.";
+} else {
+echo "Error al insertar el registro: " . $stmt->error;
+}
+
+$stmt->close();
+$conn->close();
 // Enlace para insertar otra cerveza
 echo "<p> [<a href='index.html'>Insertar otra cerveza</a>]</p>";
 ?>
