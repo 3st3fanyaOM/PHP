@@ -36,7 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             // Redirigir según el perfil
             if ($perfil === 'administrador') {
-                header("Location: menu_admin.html"); // Página de administrador
+                header("Location: admin_menu.html"); // Página de administrador
             } elseif ($perfil=== 'usuario') {
                 header("Location: index.html"); // Página de usuario
             } else {
