@@ -144,4 +144,5 @@
    
     // Enlace para insertar otra cerveza
     echo "<p> [<a href='admin_insertar_cerveza.html'>Insertar otra cerveza</a>]</p>";
+    echo "<p> [<a href='admin_menu.html'>Menú administrador</a>]</p>";
     ?>
