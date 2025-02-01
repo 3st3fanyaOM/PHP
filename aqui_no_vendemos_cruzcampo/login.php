@@ -14,7 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
     // Consulta para obtener el hash de la contraseña desde la base de datos
-    $sql = "SELECT password, perfil FROM usuarios WHERE correo = ?";
+    $sql = "SELECT id_usuario, password, perfil FROM usuarios WHERE correo = ?";
 
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("s", $email);
@@ -23,7 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
     // Si el usuario existe
     if ($stmt->num_rows > 0) {
-        $stmt->bind_result($hashed_password,$perfil);
+        $stmt->bind_result($id_usuario, $hashed_password, $perfil);
         echo $hashed_password;
         $stmt->fetch();
 
@@ -33,12 +33,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Contraseña correcta, redirigir a una página de éxito o dashboard
             $_SESSION['email'] = $email; // Guardar sesión si es necesario
             $_SESSION['perfil'] = $perfil; // Guardar perfil
+            $_SESSION['id_usuario'] = $id_usuario;  // Guardar id del usuario
+
 
             // Redirigir según el perfil
             if ($perfil === 'administrador') {
                 header("Location: admin_menu.html"); // Página de administrador
             } elseif ($perfil=== 'usuario') {
-                header("Location: index.html"); // Página de usuario
+                header("Location: carrito.php"); // Página de usuario
             } else {
                 echo "Perfil desconocido. Comunícate con el administrador.";
             }
