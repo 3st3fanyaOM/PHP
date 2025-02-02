@@ -20,7 +20,7 @@ nav {
 }
 
 nav .logo img {
-  width: 150px;
+  width: 80px;
 }
 
 nav .nav-links a {
@@ -103,4 +103,69 @@ footer a {
 
 footer a:hover {
   color: white;
+}
+
+/* Estilos para el formulario de login */
+.login-form {
+  background-color: #ffffff; /* Fondo blanco */
+  padding: 30px;
+  max-width: 400px;
+  margin: 50px auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.login-form h2 {
+  color: #1e3a8a; /* Azul oscuro */
+  margin-bottom: 20px;
+  font-size: 24px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+.form-group label {
+  display: block;
+  font-weight: bold;
+  color: #333; /* Gris oscuro */
+  margin-bottom: 5px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #e5e7eb; /* Borde gris claro */
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.btn {
+  width: 100%;
+  background-color: #2563eb; /* Azul brillante */
+  color: white;
+  border: none;
+  padding: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #1d4ed8; /* Azul más oscuro */
+}
+
+.enlace-registro {
+  display: block;
+  margin-top: 10px;
+  color: #2563eb; /* Azul brillante */
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.enlace-registro:hover {
+  color: #1d4ed8; /* Azul más oscuro */
 }
