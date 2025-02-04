@@ -3,7 +3,7 @@ session_start();
 
 // Verificar si el usuario está autenticado
 if (!isset($_SESSION['email'])) {
-    header("Location: login.html");  // Redirigir al login si no está autenticado
+    header("Location: login.php");  // Redirigir al login si no está autenticado
     exit();
 }
 
@@ -45,21 +45,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 }
 ?>
 
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Carrito de Compras</title>
-    <link rel="stylesheet" href="./styles/home.css">
-</head>
-<body>
-<h2>Tu Carrito</h2>
 
 <?php
+include '../includes/header.php';
 // Verificar si el carrito tiene productos
 if (!isset($_SESSION['carrito']) || empty($_SESSION['carrito'])) {
     echo "<p>Tu carrito está vacío.</p>";
+    echo "<a href='index.php'>_Ver productos</a><br>";
 } else {
     echo "<table border='1'>
         <thead>
@@ -88,9 +80,9 @@ if (!isset($_SESSION['carrito']) || empty($_SESSION['carrito'])) {
     echo "</tbody></table>";
 
     echo "<h3>Total: {$total}€</h3>";
-    echo "<a href='index.php'>Seguir comprando</a>";
+    echo "<a href='index.php'>Seguir comprando</a><br>";
     echo "<a href='usuario_procesar_pedido.php'>Finalizar compra</a>";
 }
+include '../includes/footer.php';
 ?>
-</body>
-</html>
+

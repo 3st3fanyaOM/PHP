@@ -3,7 +3,7 @@
 session_start();
 
 // Conectar a la base de datos
-include("conexion.php");
+include("../includes/conexion.php");
 
 
 // Comprobar si el formulario fue enviado
@@ -38,7 +38,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             // Redirigir según el perfil
             if ($perfil === 'administrador') {
-                header("Location: admin_menu.html"); // Página de administrador
+                header("Location: ../admin/admin_menu.php"); // Página de administrador
             } elseif ($perfil=== 'usuario') {
                 header("Location: carrito.php"); // Página de usuario
             } else {

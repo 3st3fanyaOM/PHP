@@ -1,6 +1,6 @@
 <?php
 // Conectar a la base de datos
-include("conexion.php");
+include("../includes/conexion.php");
 
 // Comprobar si se pasa un ID a través de la URL
 if (isset($_GET['id'])) {

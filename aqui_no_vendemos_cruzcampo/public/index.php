@@ -1,6 +1,6 @@
 <?php
 // Conectar a la base de datos
-include("conexion.php");
+include("../includes/conexion.php");
 
 
 // Consulta para obtener cervezas
@@ -31,7 +31,7 @@ $result = $conn->query($sql);
           <img src="../assets/prohibido.png" alt="" style="width:80px"/>
         </div>
         <div class="nav-links">
-          <a href="login.html" class="login-btn">
+          <a href="login.php" class="login-btn">
             <i class="fas fa-user"></i>Iniciar Sesión
           </a>
         </div>

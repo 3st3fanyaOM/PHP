@@ -1,6 +1,6 @@
 <?php
 // Conectar a la base de datos
-include("conexion.php");
+include("../includes/conexion.php");
 
 // obtener cervezas
 $sql = "SELECT id_cerveza, denominacion, marca, tipo, formato, tamanio, alergenos, fecha, foto, precio, observaciones FROM cervezas";

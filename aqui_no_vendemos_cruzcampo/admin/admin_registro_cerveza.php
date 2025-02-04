@@ -1,6 +1,6 @@
 <?php
     // Conectar a la base de datos
-    include("conexion.php");
+    include("../includes/conexion.php");
 
     // Inicializar variables
     $denominacion = $_POST['denominacion'] ?? '';

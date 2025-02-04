@@ -1,6 +1,6 @@
 <?php
 // Conectar a la base de datos
-include("conexion.php");
+include("../includes/conexion.php");
 
 // Variables para los mensajes de error
 $email_error = $password_error = $age_error = "";

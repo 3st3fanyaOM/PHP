@@ -1,6 +1,6 @@
 <?php
 // Conectar a la base de datos
-include("conexion.php");
+include("../includes/conexion.php");
 
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
