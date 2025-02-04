@@ -22,13 +22,13 @@ $result = $conn->query($sql);
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-    <link rel="stylesheet" href="./styles/home.css" />
+    <link rel="stylesheet" href="../styles/home.css" />
 </head>
 <body>
 <header>
       <nav>
         <div class="logo">
-          <img src="./assets/prohibido.png" alt="" style="width:80px"/>
+          <img src="../assets/prohibido.png" alt="" style="width:80px"/>
         </div>
         <div class="nav-links">
           <a href="login.html" class="login-btn">
