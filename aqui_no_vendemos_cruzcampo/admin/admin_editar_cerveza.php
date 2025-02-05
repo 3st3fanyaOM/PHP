@@ -3,20 +3,29 @@
 include("../includes/conexion.php");
 
 // Comprobar si se pasa un ID a través de la URL
+//var_dump($_GET);
+// Comprobar si se pasa un ID a través de la URL
 if (isset($_GET['id'])) {
-    $id_cerveza = $_GET['id'];
+    // Verifica que el parámetro ID esté presente y sea numérico
+    if (is_numeric($_GET['id'])) {
+        // Asignamos el valor como entero
+        $id_cerveza = (int)$_GET['id']; 
 
-    // Obtener los datos actuales de la cerveza desde la base de datos
-    $sql = "SELECT * FROM cervezas WHERE id_cerveza = ?";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("i", $id_cerveza);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    $cerveza = $result->fetch_assoc();
+        // Obtener los datos actuales de la cerveza desde la base de datos
+        $sql = "SELECT * FROM cervezas WHERE id_cerveza = ?";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("i", $id_cerveza);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $cerveza = $result->fetch_assoc();
 
-    // Si no se encuentra la cerveza, redirigir o mostrar un error
-    if (!$cerveza) {
-        echo "Cerveza no encontrada.";
+        // Si no se encuentra la cerveza, redirigir o mostrar un error
+        if (!$cerveza) {
+            echo "Cerveza no encontrada.";
+            exit;
+        }
+    } else {
+        echo "El ID de cerveza no es válido.";
         exit;
     }
 } else {
@@ -26,6 +35,7 @@ if (isset($_GET['id'])) {
 
 // Si el formulario se ha enviado, actualizamos los datos
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    //var_dump($_POST);
     // Obtener los valores del formulario
     $denominacion = $_POST['denominacion'];
     $marca = $_POST['marca'];
@@ -44,14 +54,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($stmt_update->execute()) {
         echo "Cerveza actualizada correctamente.";
+        header("Location: admin_listar.php");
+        exit;
     } else {
-        echo "Error al actualizar la cerveza: " . $conn->error;
+        echo "Error al actualizar la cerveza: " . $stmt_update->error;
     }
 }
 ?>
 
-<form class="product-form" action="admin_editar_cerveza.php" method="POST" enctype="multipart/form-data">
+<form class="product-form" action="admin_editar_cerveza.php?id=<?php echo $id_cerveza; ?>" method="POST" enctype="multipart/form-data">
+
     <fieldset class="formulario">
+    <?php include '../includes/header.php'; ?>
         <h4>Editar los datos de la cerveza:</h4>
         <hr /><br />
         
@@ -134,3 +148,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <input type="submit" value="Actualizar Cerveza" /><br /><br />
     </fieldset>
 </form>
+<?php include '../includes/footer.php'; ?>

@@ -18,34 +18,11 @@ session_destroy();  // Destruye la sesión
 
 ?>
 
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Compra Realizada</title>
-<link rel="stylesheet" href="../styles/home.css">
-</head>
-<body>
-<header>
-      <nav>
-        <div class="logo">
-          <img src="../assets/prohibido.png" alt="" style="width:80px"/>
-        </div>
-      </nav>
-    </header>
+<?php include '../includes/header.php'; ?>
 <h1>¡Compra realizada con éxito!</h1>
-<p>Gracias por tu compra. Hemos procesado tu pedido y hemos limpiado tu carrito.</p>
+<p>Gracias por tu compra.</p>
 <p>Sesión cerrada</p>
 <p> Si deseas realizar otra compra, por favor, vuelve a iniciar sesión.</p>
 
 <p><a href="../public/index.php">Inicio</a></p>
-<footer>
-      <p>
-        © Tienda de cervezas. Todos los derechos reservados |
-        <a href="#" target="_blank">Aviso Legal</a> |
-        <a href="#" target="_blank">Buzón de sugerencias</a>
-      </p>
-    </footer>
-</body>
-</html>
+<?php include '../includes/header.php'; ?>

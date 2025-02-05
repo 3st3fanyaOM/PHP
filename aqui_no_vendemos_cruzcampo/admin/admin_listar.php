@@ -29,9 +29,12 @@ while ($row = $result->fetch_assoc()) {
 
     // Botones de editar y eliminar con el ID de la cerveza
     echo "<td>
-            <span><a href='admin_editar_cerveza.php?id=" . $row['id_cerveza'] . "'><button>Editar</button></a>
-            <a href='admin_eliminar_cerveza.php?id=" . $row['id_cerveza'] . "'><button>Eliminar</button></span></a>
-          </td>";
+    <span>
+        <a href='admin_editar_cerveza.php?id=" . $row['id_cerveza'] . "'><button>Editar</button></a>
+        <a href='admin_eliminar_cerveza.php?id=" . $row['id_cerveza'] . "'><button>Eliminar</button></a>
+    </span>
+</td>";
+
     echo "</tr>";
 }
 
