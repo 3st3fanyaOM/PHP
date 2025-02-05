@@ -173,5 +173,135 @@ footer a:hover {
 .error-message {
   color: red;
   font-size: 14px;
-  display: none;
+}
+
+/*estilos registro cerveza*/
+.product-form {
+  max-width: 500px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #2d45c8;
+  color: #f4f7fc;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
+}
+
+.product-form fieldset {
+  border: none;
+}
+
+.product-form h4 {
+  text-align: center;
+  color: #fff;
+  font-size: 1.2em;
+  margin-bottom: 15px;
+}
+
+.product-form label {
+  font-weight: bold;
+  color: #fff;
+  display: block;
+  margin: 10px 0 5px;
+}
+
+.product-form input[type="text"],
+.product-form input[type="number"],
+.product-form input[type="date"],
+.product-form select,
+.product-form textarea {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 10 px;
+}
+
+.product-form input[type="submit"],
+input[type="reset"] {
+  background-color: white; /* Fondo blanco */
+  color: blue; /* Letra azul */
+  border: 1px solid blue; /* Borde azul */
+  padding: 10px 20px; /* Espaciado interno */
+  font-size: 16px; /* Tamaño de la fuente */
+  cursor: pointer; /* Cambia el cursor al pasar por encima */
+  border-radius: 5px; /* Bordes redondeados */
+  transition: background-color 0.3s, color 0.3s; /* Efecto de transición */
+}
+
+.product-form input[type="submit"]:hover,
+input[type="reset"]:hover {
+  background-color: blue; /* Fondo azul cuando el cursor está encima */
+  color: white; /* Letra blanca cuando el cursor está encima */
+}
+
+/* Estilos del contenedor del formulario */
+.register-form {
+  max-width: 500px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Título del formulario */
+.register-form h2 {
+  text-align: center;
+  color: #333;
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
+/* Estilos de los campos de entrada */
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  color: #333;
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+input[type="email"],
+input[type="password"],
+input[type="number"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="number"]:focus {
+  border-color: #1e2a47;
+  outline: none;
+}
+
+/* Estilos de los mensajes de error */
+.error {
+  color: red;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+/* Estilos del botón */
+.btn {
+  width: 100%;
+  padding: 10px;
+  background-color: #1e2a47;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #26377c;
 }

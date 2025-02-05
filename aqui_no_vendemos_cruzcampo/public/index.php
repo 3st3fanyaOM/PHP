@@ -36,7 +36,7 @@ $result = $conn->query($sql);
           </a>
         </div>
         <div class="nav-links">
-          <a href="carrito.html" class="login-btn">
+          <a href="carrito.php" class="login-btn">
             <i class="fas fa-shopping-cart"></i>Carrito
           </a>
         </div>
@@ -61,7 +61,7 @@ $result = $conn->query($sql);
         if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
                 echo "<tr>
-                    <td><img src='{$row["foto"]}' width='50' height='50' alt='Imagen de {$row["denominacion"]}'></td>
+                    <td><img src='../admin/{$row["foto"]}' width='50' height='50' alt='Imagen de {$row["denominacion"]}'></td>
                     <td>{$row['denominacion']}</td>
                     <td>{$row['marca']}</td>
                     <td>{$row['tipo']}</td>

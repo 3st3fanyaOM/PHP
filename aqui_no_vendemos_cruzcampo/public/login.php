@@ -12,7 +12,7 @@
             <input type="password" id="password" name="password" required />
           </div>
           <button type="submit" class="btn">Login</button>
-          <a class="enlace-registro" href="../public/registro_usuario.html"
+          <a class="enlace-registro" href="../public/registro_usuario.php"
             >¿No tienes cuenta? Pulsa aqui.</a
           >
         </form>

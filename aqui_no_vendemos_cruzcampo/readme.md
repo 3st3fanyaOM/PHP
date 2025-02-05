@@ -9,3 +9,5 @@
 ## Para entrar como administrador: Iniciar sesión e ingresar esta cuenta:
 
 ## admin : admin1@mail.com pwd:asdfasdf
+
+## con el logo, siempre vuelves al index

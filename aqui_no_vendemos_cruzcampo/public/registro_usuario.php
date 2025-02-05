@@ -1,13 +1,5 @@
-<!DOCTYPE html>
-<html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Registro Usuario</title>
-    <link rel="stylesheet" href="../styles/home.css" />
-  </head>
-  <body>
-    <header>Registro de Usuario</header>
+<?php include '../includes/header.php'; ?>
+    <h1>Registro de Usuario</h1>
     <main>
       <div class="register-form">
         <h2>Formulario de Registro</h2>
@@ -66,13 +58,4 @@
         </form>
       </div>
     </main>
-
-    <footer>
-      <p>
-        © Tienda de cervezas. Todos los derechos reservados |
-        <a href="#" target="_blank">Aviso Legal</a> |
-        <a href="#" target="_blank">Buzón de sugerencias</a>
-      </p>
-    </footer>
-  </body>
-</html>
+    <?php include '../includes/footer.php'; ?>

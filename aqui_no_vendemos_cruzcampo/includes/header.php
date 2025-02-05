@@ -18,7 +18,7 @@
 <header>
       <nav>
         <div class="logo">
-          <a href="index.php"><img src="../assets/prohibido.png" alt="" style="width:80px"/></a>
+          <a href="../public/index.php"><img src="../assets/prohibido.png" alt="" style="width:80px"/></a>
         </div>
       </nav>
     </header>
