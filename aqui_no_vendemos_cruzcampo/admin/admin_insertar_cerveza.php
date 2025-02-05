@@ -1,18 +1,7 @@
-<!DOCTYPE html>
-<html lang="es">
-  <head>
-    <meta charset="UTF-8_encode" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Prohibido Cruzcampo</title>
-    <link
-      rel="stylesheet"
-      href="../aqui_no_vendemos_cruzcampo/styles/styles.css"
-    />
-  </head>
-  <body>
+<?php include '../includes/header.php'; ?>
     <h1>Inserci&oacute;n de cervezas</h1>
     <div class="container">
-      <form class="product-form" action="admin_registro_cerveza.php" method="POST" enctype="multipart/form-data">
+      <form class="product-form" action="admin_registro_cerveza.php" method="POST" enctype="multipart/form-data" id="cervezaForm">
         <fieldset class="formulario">
           <h4>Introduzca los datos de la cerveza:</h4>
           <hr />
@@ -20,6 +9,7 @@
           <!-- denominacion -->
           <label for="denominacion">Denominaci&oacute;n:</label><br />
           <input type="text" id="denominacion" name="denominacion" /><br /><br />
+          <span class="error-message">Este campo no puede estar vacío.</span><br /><br />
            <!-- marca -->
            <label for="marca">Marca:</label
             ><br />
@@ -28,9 +18,9 @@
               <option value="Mahou">Mahou</option>
               <option value="DAM">DAM</option>
               <option value="Estrella Galicia">Estrella Galicia</option>
-              <option value="Cruzcampo">Cruzcampo</option>
               <option value="Alhambra">Alhambra</option></select
             ><br /><br />
+            <span class="error-message">Debe seleccionar una marca.</span><br /><br />
           <!-- tipo -->
           <label for="tipo">Tipo de cerveza:</label><br />
           <input type="radio" id="lager" name="tipo" value="lager">
@@ -44,6 +34,7 @@
           <input type="radio" id="rubia" name="tipo" value="rubia">
           <label for="rubia">RUBIA</label><br>
           <br /><br />
+          <span class="error-message">Debe seleccionar un tipo de cerveza.</span><br /><br />
            <!-- formato -->
            <label for="formato">Formato:</label
             ><br />
@@ -53,6 +44,7 @@
               <option value="pack">Pack</option>
               </select
             ><br /><br />
+            <span class="error-message">Debe seleccionar un formato de cerveza.</span><br /><br />
           <!-- tamaño -->
           <label for="tamanio">Tamaño:</label
             ><br />
@@ -64,6 +56,7 @@
               <option value="pack">Pack</option>
               </select
             ><br /><br />
+            <span class="error-message">Debes seleccionar un tamaño</span><br /><br />
             <!-- alergenos -->
           <p><label>Al&eacute;rgenos:</label></p>
           <br />
@@ -124,7 +117,7 @@
           <!-- precio -->
           <label for="precio"
             >Precio:</label><br />
-          <><input type="number" id="precio" name="precio" /><span>  &euro;</span><br /><br />
+          <input type="number" id="precio" name="precio" /><span>  &euro;</span><br /><br />
           <!-- observaciones -->
           <label for="observaciones">Observaciones:</label><br />
           <textarea
@@ -141,5 +134,5 @@
       </form>
     </fieldset>
     </div>
-  </body>
-</html>
+    <script src="./js/script.js"></script>
+    <?php include '../includes/footer.php'; ?>

@@ -36,7 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION['id_usuario'] = $id_usuario;  // Guardar id del usuario
 
 
-            // Redirigir según el perfil
+            // Redirigir según el perfils
             if ($perfil === 'administrador') {
                 header("Location: ../admin/admin_menu.php"); // Página de administrador
             } elseif ($perfil=== 'usuario') {

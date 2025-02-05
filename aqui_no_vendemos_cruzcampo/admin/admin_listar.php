@@ -8,6 +8,7 @@ $result = $conn->query($sql);
 
 // Verificar si hay resultados
 if ($result->num_rows > 0) {
+    include '../includes/header.php';
     echo "<h2>Lista de Cervezas</h2>";
     echo "<table border='1' cellpadding='10'>";
     echo "<tr><th>Denominación</th><th>Marca</th><th>Tipo</th><th>Formato</th><th>Tamaño</th><th>Alergenos</th><th>Fecha Caducidad</th><th>Foto</th><th>Precio</th><th>Observaciones</th><th>Acciones</th></tr>";
@@ -35,6 +36,7 @@ while ($row = $result->fetch_assoc()) {
 }
 
 echo "</table>";
+include '../includes/footer.php';
 } else {
 echo "No se encontraron cervezas en la base de datos.";
 }
