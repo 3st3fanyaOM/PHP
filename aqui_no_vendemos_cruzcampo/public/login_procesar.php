@@ -48,7 +48,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         } else {
             // Contraseña incorrecta
             echo "Contraseña incorrecta. Intenta nuevamente.";
-            echo "<br><p> [<a href='login.html'>Volver al login</a>]</p><br>";
+            echo "<br><p> [<a href='login.php'>Volver al login</a>]</p><br>";
         }
     } else {
         // Usuario no encontrado

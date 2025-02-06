@@ -210,7 +210,7 @@ footer a:hover {
 .product-form input[type="date"],
 .product-form select,
 .product-form textarea {
-  width: 100%;
+  width: 90%;
   padding: 8px;
   margin-bottom: 10px;
   border: 1px solid #ccc;

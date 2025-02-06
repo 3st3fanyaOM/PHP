@@ -25,4 +25,4 @@ session_destroy();  // Destruye la sesión
 <p> Si deseas realizar otra compra, por favor, vuelve a iniciar sesión.</p>
 
 <p><a href="../public/index.php">Inicio</a></p>
-<?php include '../includes/header.php'; ?>
+<?php include '../includes/footer.php'; ?>

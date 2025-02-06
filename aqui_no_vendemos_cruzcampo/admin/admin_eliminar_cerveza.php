@@ -45,7 +45,7 @@ if (isset($_GET['id'])) {
                     <input type="hidden" name="confirmar" value="yes">
                     <input type="submit" value="Confirmar eliminación">
                   </form>';
-            echo '<a href="admin_lista_cervezas.php">Volver a la lista</a>';
+            echo '<a href="admin_listar.php">Volver a la lista</a>';
             include '../includes/footer.php';
         }
     } else {

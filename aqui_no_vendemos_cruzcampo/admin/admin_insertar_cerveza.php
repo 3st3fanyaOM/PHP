@@ -133,7 +133,7 @@ include '../includes/header.php';
             <span class="error-message"><?= $errores["precio"] ?? "" ?></span>
             <!-- observaciones -->
             <label for="observaciones">Observaciones:</label><br>
-            <textarea id="observaciones" name="observaciones" rows="4" cols="50"><br>
+            <textarea id="observaciones" name="observaciones" rows="4" cols="50"></textarea><br>
             <span class="error-message"><?= $errores["observaciones"] ?? "" ?></span>
 
             <input type="submit" value="Insertar Cerveza" />

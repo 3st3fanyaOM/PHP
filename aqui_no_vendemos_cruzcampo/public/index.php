@@ -74,6 +74,7 @@ $result = $conn->query($sql);
                             <input type='hidden' name='id_cerveza' value='{$row["id_cerveza"]}'>
                             <input type='hidden' name='denominacion' value='{$row["denominacion"]}'>
                             <input type='hidden' name='precio' value='{$row["precio"]}'>
+                            <input type='hidden' name='action' value='add'>
                             <button type='submit'>Añadir al carrito</button>
                         </form>
                     </td>

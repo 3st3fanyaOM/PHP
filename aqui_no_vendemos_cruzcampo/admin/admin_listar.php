@@ -36,9 +36,11 @@ while ($row = $result->fetch_assoc()) {
 </td>";
 
     echo "</tr>";
+    
 }
 
 echo "</table>";
+echo "<a href='logout.php'>Cerrar sesión</a>";
 include '../includes/footer.php';
 } else {
 echo "No se encontraron cervezas en la base de datos.";
