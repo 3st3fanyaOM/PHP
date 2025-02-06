@@ -6,19 +6,15 @@ $denominacion = $marca = $tipo = $formato = $tamanio = $fechacaducidad = $precio
 $alergenos = [];
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Validaciones
-    $denominacion = empty($_POST["denominacion"]) ? $errores["denominacion"] = "Este campo no puede estar vacío." : htmlspecialchars($_POST["denominacion"]);
-    $marca = empty($_POST["marca"]) ? $errores["marca"] = "Debe seleccionar una marca." : $_POST["marca"];
-    $tipo = empty($_POST["tipo"]) ? $errores["tipo"] = "Debe seleccionar un tipo de cerveza." : $_POST["tipo"];
-    $formato = empty($_POST["formato"]) ? $errores["formato"] = "Debe seleccionar un formato." : $_POST["formato"];
-    $tamanio = empty($_POST["tamanio"]) ? $errores["tamanio"] = "Debe seleccionar un tamaño." : $_POST["tamanio"];
-    $fechacaducidad = empty($_POST["fechacaducidad"]) ? $errores["fechacaducidad"] = "Debe seleccionar una fecha válida." : $_POST["fechacaducidad"];
-    $precio = (empty($_POST["precio"]) || !is_numeric($_POST["precio"]) || $_POST["precio"] <= 0) ? $errores["precio"] = "Debe ingresar un precio válido." : $_POST["precio"];
-    if (empty($_POST["alergenos"])) {
-      $errores["alergenos"] = "Debe seleccionar al menos un alérgeno.";
-    } else {
-      $alergenos = $_POST["alergenos"]; // Aquí se guardan los alérgenos seleccionados
-    }
+    // Validaciones con operadores ternarios
+    $denominacion = empty($_POST["denominacion"]) ? ($errores["denominacion"] = "Este campo no puede estar vacío.") : htmlspecialchars($_POST["denominacion"]);
+    $marca = empty($_POST["marca"]) ? ($errores["marca"] = "Debe seleccionar una marca.") : $_POST["marca"];
+    $tipo = empty($_POST["tipo"]) ? ($errores["tipo"] = "Debe seleccionar un tipo de cerveza.") : $_POST["tipo"];
+    $formato = empty($_POST["formato"]) ? ($errores["formato"] = "Debe seleccionar un formato.") : $_POST["formato"];
+    $tamanio = empty($_POST["tamanio"]) ? ($errores["tamanio"] = "Debe seleccionar un tamaño.") : $_POST["tamanio"];
+    $fechacaducidad = empty($_POST["fechacaducidad"]) ? ($errores["fechacaducidad"] = "Debe seleccionar una fecha válida.") : $_POST["fechacaducidad"];
+    $precio = (empty($_POST["precio"]) || !is_numeric($_POST["precio"]) || $_POST["precio"] <= 0) ? ($errores["precio"] = "Debe ingresar un precio válido.") : $_POST["precio"];
+    $alergenos = empty($_POST["alergenos"]) ? ($errores["alergenos"] = "Debe seleccionar al menos un alérgeno.") : $_POST["alergenos"];
     $observaciones = !empty($_POST["observaciones"]) ? htmlspecialchars($_POST["observaciones"]) : "";
 
     // Procesar imagen
@@ -27,7 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $rutaArchivo = $directorio . basename($_FILES["foto"]["name"]);
         $tipoArchivo = strtolower(pathinfo($rutaArchivo, PATHINFO_EXTENSION));
         $check = getimagesize($_FILES["foto"]["tmp_name"]);
-        
+
         if ($check !== false && in_array($tipoArchivo, ["jpg", "jpeg", "png", "gif"])) {
             move_uploaded_file($_FILES["foto"]["tmp_name"], $rutaArchivo);
         } else {
@@ -39,16 +35,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Insertar en base de datos si no hay errores
     if (empty($errores)) {
-      $alergenos_str = json_encode($alergenos);
+        $alergenos_str = json_encode($alergenos);
         $sql = "INSERT INTO cervezas (denominacion, marca, tipo, formato, tamanio, alergenos, fecha, foto, precio, observaciones)
                 VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("ssssssssss", $denominacion, $marca, $tipo, $formato, $tamanio, $alergenos_str, $fechacaducidad, $rutaArchivo, $precio, $observaciones);
-        
+
         if ($stmt->execute()) {
-            echo "<p style='color:blue;'>Cerveza registrada con éxito.</p>";
-            echo "<p> [<a href='admin_insertar_cerveza.php'>Insertar otra cerveza</a>]</p>";
-            echo "<p> [<a href='admin_menu.php'>Menú administrador</a>]</p>";
+            header("Location: cerveza_insertada.php");
+            exit();
         } else {
             echo "<p style='color:red;'>Error al insertar el registro: " . $stmt->error . "</p>";
         }
@@ -56,7 +51,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->close();
         $conn->close();
     } else {
-        echo "<p style='color:red;'>Ha habido algún problema con la inserción en la base de datos.</p>";
+        echo "<p style='color:red;'>Por favor, corrija los errores antes de continuar.</p>";
     }
 }
 
@@ -102,28 +97,28 @@ include '../includes/header.php';
             <span class="error-message"><?= $errores["formato"] ?? "" ?></span>
             <!-- tamaño -->
             <label for="tamanio">Tamaño:</label><br />
-              <select name="tamanio" id="tamanio">
+            <select name="tamanio" id="tamanio">
                 <option value="">Seleccione un tamaño</option>
                 <option value="botellin" <?= ($tamanio == "botellin") ? "selected" : "" ?>>Botellin</option>
                 <option value="tercio" <?= ($tamanio == "tercio") ? "selected" : "" ?>>Tercio</option>
                 <option value="media" <?= ($tamanio == "media") ? "selected" : "" ?>>Media</option>
                 <option value="litrona" <?= ($tamanio == "litrona") ? "selected" : "" ?>>Litrona</option>
-              </select><br />
-              <span class="error-message"><?= $errores["tamanio"] ?? "" ?></span><br />
+            </select><br />
+            <span class="error-message"><?= $errores["tamanio"] ?? "" ?></span><br />
             <!-- alergenos -->
             <p><label>Al&eacute;rgenos:</label></p>
             <?php
             $opciones_alergenos = ["Gluten", "Cacahuete", "Soja", "Lácteo", "Sulfitos", "Huevo", "Sin alérgenos"];
-              foreach ($opciones_alergenos as $al) {
+            foreach ($opciones_alergenos as $al) {
                 echo "<label>$al</label>
                   <input type='checkbox' name='alergenos[]' value='$al' " . (in_array($al, $alergenos) ? "checked" : "") . " />";
-              }
+            }
             ?><br /><br />
-           <!-- fecha caducidad -->
+            <!-- fecha caducidad -->
             <label for="fechacaducidad">Fecha de consumo preferente:</label>
             <input type="date" id="fechacaducidad" name="fechacaducidad" value="<?= $fechacaducidad ?>" /><br />
-           <span class="error-message"><?= $errores["fechacaducidad"] ?? "" ?></span><br /><br />
-           <!-- foto -->
+            <span class="error-message"><?= $errores["fechacaducidad"] ?? "" ?></span><br /><br />
+            <!-- foto -->
             <label for="foto">Foto:</label><br>
             <input type="file" name="foto" /><br>
             <span class="error-message"><?= $errores["foto"] ?? "" ?></span>
@@ -133,11 +128,11 @@ include '../includes/header.php';
             <span class="error-message"><?= $errores["precio"] ?? "" ?></span>
             <!-- observaciones -->
             <label for="observaciones">Observaciones:</label><br>
-            <textarea id="observaciones" name="observaciones" rows="4" cols="50"></textarea><br>
+            <textarea id="observaciones" name="observaciones" rows="4" cols="50"><?= $observaciones ?></textarea><br>
             <span class="error-message"><?= $errores["observaciones"] ?? "" ?></span>
 
             <input type="submit" value="Insertar Cerveza" />
-            <input type="reset" value="Resetear Formulario"/>
+            <input type="reset" value="Resetear Formulario" />
         </fieldset>
     </form>
 </div>
