@@ -1,4 +1,16 @@
-<?php include '../includes/header.php'; ?>
+<?php 
+// Inicializar las variables
+$email = $password = $age = '';
+$email_error = $password_error = $age_error = '';
+
+// Si el formulario ha sido enviado, captura los valores
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $email = $_POST['email'] ?? '';
+    $password = $_POST['password'] ?? '';
+    $age = $_POST['age'] ?? '';
+}
+
+include '../includes/header.php'; ?>
     <h1>Registro de Usuario</h1>
     <main>
       <div class="register-form">

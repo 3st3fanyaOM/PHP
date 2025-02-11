@@ -90,6 +90,7 @@ if (!isset($_SESSION['carrito']) || empty($_SESSION['carrito'])) {
     foreach ($_SESSION['carrito'] as $producto) {
         $subtotal = $producto['precio'] * $producto['cantidad'];
         $total += $subtotal;
+        $_SESSION['total'] = $total;
 
         echo "<tr>
             <td>{$producto['nombre']}</td>

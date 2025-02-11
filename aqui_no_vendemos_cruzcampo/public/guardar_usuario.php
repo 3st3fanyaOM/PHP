@@ -14,6 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $password = mysqli_real_escape_string($conn, $_POST['password']);
     $age = (int) $_POST['age'];
 
+
     // usu_validación: Ningún campo debe estar vacío
     $usu_valido = true;
 
@@ -33,20 +34,37 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     if ($usu_valido) {
-        // Cifrar la contraseña
-        $passwd=md5($password);
-        $password_cifrado = crypt($password,$passwd);
+       
 
-        // Preparar la consulta SQL
-        $sql = "INSERT INTO usuarios (correo, password, edad, perfil, password_sin) 
-                VALUES ('$email', '$password_cifrado', $age, 'usuario', '$password')";
+        // Comprobar si el email ya existe en la base de datos
+        $sql_check_email = "SELECT id_usuario FROM usuarios WHERE correo = '$email'";
+        $result = $conn->query($sql_check_email);
 
-        // Ejecutar la consulta
-        if ($conn->query($sql) === TRUE) {
-            echo "Usuario registrado con éxito";
-            echo "<br><p> [<a href='index.html'>Volver al catálogo</a>]</p><br>";
+        if ($result->num_rows > 0) {
+            include '../includes/header.php';
+            echo "El email ya está registrado.<br>";
+            // Si el email ya existe, mostrar un mensaje de error
+            echo "<br><p> [<a href='login.php'>Volver al login</a>]</p><br>";
+            include '../includes/footer.php';
         } else {
-            echo "Error: " . $conn->error;
+            // Si el email no existe, proceder con el registro
+            // Cifrar la contraseña
+            $passwd = md5($password);
+            $password_cifrado = crypt($password, $passwd);
+
+            // Preparar la consulta SQL para insertar el nuevo usuario
+            $sql = "INSERT INTO usuarios (correo, password, edad, perfil, password_sin) 
+                    VALUES ('$email', '$password_cifrado', $age, 'usuario', '$password')";
+
+            // Ejecutar la consulta
+            if ($conn->query($sql) === TRUE) {
+                include '../includes/header.php';
+                echo "Usuario registrado con éxito";
+                echo "<br><p> [<a href='index.php'>Volver al catálogo</a>]</p><br>";
+                include '../includes/footer.php';
+            } else {
+                echo "Error al registrar el usuario: " . $conn->error . "<br>";
+            }
         }
     }
 }
