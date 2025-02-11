@@ -23,7 +23,7 @@
 
 ---
 
-- Como administrador primero tienes que iniciar sesión con la cuenta administrador:
+- Como administrador primero tienes que iniciar sesión con la cuenta administrador.
 - cuenta de administrador: admin1@mail.com pwd:asdfasdf
 - Accedes al menu administrador con 2 opciones:
 - Insertar el producto: accede al formulario, introduce los datos y registra el producto

@@ -6,16 +6,48 @@ $denominacion = $marca = $tipo = $formato = $tamanio = $fechacaducidad = $precio
 $alergenos = [];
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Validaciones con operadores ternarios
-    $denominacion = empty($_POST["denominacion"]) ? ($errores["denominacion"] = "Este campo no puede estar vacío.") : htmlspecialchars($_POST["denominacion"]);
-    $marca = empty($_POST["marca"]) ? ($errores["marca"] = "Debe seleccionar una marca.") : $_POST["marca"];
-    $tipo = empty($_POST["tipo"]) ? ($errores["tipo"] = "Debe seleccionar un tipo de cerveza.") : $_POST["tipo"];
-    $formato = empty($_POST["formato"]) ? ($errores["formato"] = "Debe seleccionar un formato.") : $_POST["formato"];
-    $tamanio = empty($_POST["tamanio"]) ? ($errores["tamanio"] = "Debe seleccionar un tamaño.") : $_POST["tamanio"];
-    $fechacaducidad = empty($_POST["fechacaducidad"]) ? ($errores["fechacaducidad"] = "Debe seleccionar una fecha válida.") : $_POST["fechacaducidad"];
-    $precio = (empty($_POST["precio"]) || !is_numeric($_POST["precio"]) || $_POST["precio"] <= 0) ? ($errores["precio"] = "Debe ingresar un precio válido.") : $_POST["precio"];
-    $alergenos = empty($_POST["alergenos"]) ? ($errores["alergenos"] = "Debe seleccionar al menos un alérgeno.") : $_POST["alergenos"];
-    $observaciones = !empty($_POST["observaciones"]) ? htmlspecialchars($_POST["observaciones"]) : "";
+     // Validaciones
+     $denominacion = $_POST["denominacion"] ?? "";
+     if (empty($denominacion)) {
+         $errores["denominacion"] = "Este campo no puede estar vacío.";
+     }
+ 
+     $marca = $_POST["marca"] ?? "";
+     if (empty($marca)) {
+         $errores["marca"] = "Debe seleccionar una marca.";
+     }
+ 
+     $tipo = $_POST["tipo"] ?? "";
+     if (empty($tipo)) {
+         $errores["tipo"] = "Debe seleccionar un tipo de cerveza.";
+     }
+ 
+     $formato = $_POST["formato"] ?? "";
+     if (empty($formato)) {
+         $errores["formato"] = "Debe seleccionar un formato.";
+     }
+ 
+     $tamanio = $_POST["tamanio"] ?? "";
+     if (empty($tamanio)) {
+         $errores["tamanio"] = "Debe seleccionar un tamaño.";
+     }
+ 
+     $fechacaducidad = $_POST["fechacaducidad"] ?? "";
+     if (empty($fechacaducidad)) {
+         $errores["fechacaducidad"] = "Debe seleccionar una fecha válida.";
+     }
+ 
+     $precio = $_POST["precio"] ?? "";
+     if (empty($precio) || !is_numeric($precio) || $precio <= 0) {
+         $errores["precio"] = "Debe ingresar un precio válido.";
+     }
+ 
+     $alergenos = $_POST["alergenos"] ?? [];
+     if (empty($alergenos)) {
+         $errores["alergenos"] = "Debe seleccionar al menos un alérgeno.";
+     }
+ 
+     $observaciones = $_POST["observaciones"] ?? "";
 
     // Procesar imagen
     if ($_FILES["foto"]["error"] == 0) {
@@ -110,8 +142,9 @@ include '../includes/header.php';
             <?php
             $opciones_alergenos = ["Gluten", "Cacahuete", "Soja", "Lácteo", "Sulfitos", "Huevo", "Sin alérgenos"];
             foreach ($opciones_alergenos as $al) {
+                $checked = ($al === "Sin alérgenos" && empty($alergenos)) ? "checked" : (in_array($al, $alergenos) ? "checked" : "");
                 echo "<label>$al</label>
-                  <input type='checkbox' name='alergenos[]' value='$al' " . (in_array($al, $alergenos) ? "checked" : "") . " />";
+                <input type='checkbox' name='alergenos[]' value='$al' $checked />";
             }
             ?><br /><br />
             <!-- fecha caducidad -->
