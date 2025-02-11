@@ -1,13 +1,32 @@
 # Tienda de Cervezas
 
-### URL : http://localhost/PHP/aqui_no_vendemos_cruzcampo/public/index.php
+## Instrucciones de la página
+---
 
-## Como usuario añadir productos al carrito, para ello tendrá que estar registrado:
+### Parte de usuario:
+---
 
-## usuario : usuario1@mail.com pwd: asdfasdf
+- Inicio : aparece la lista de productos, si quiere comprar el sistema te pide que te loguees.
+- Si tiene cuenta introduce email y contraseña.
+- cuenta de usuario : usuario1@mail.com pwd: asdfasdf
+- Si no tiene cuenta, pincha en el enlace para crearla.
+- Si esta logueado aparece carrito vacío, puedes ir a inicio y meter productos en el carrito
+- En el carrito puedes ver los productos y el total de la compra
+- En el carrito puedes eliminar un producto y seguir comprando
+- Cuando tienes listo el carrito puedes formalizar la compra pulsando el botón
+- Cuando termina la compra finaliza la sesión
 
-## Para entrar como administrador: Iniciar sesión e ingresar esta cuenta:
+### Parte de administrador:
+---
 
-## admin : admin1@mail.com pwd:asdfasdf
+- Como administrador primero tienes que iniciar sesión con la cuenta administrador:
+- cuenta de administrador: admin1@mail.com pwd:asdfasdf
+- Accedes al menu administrador con 2 opciones:
+- Insertar el producto: accede al formulario, introduce los datos y registra el producto
+- Listar productos: accede a una lista de productos con la posibilidad de editar un producto o eliminarlo.
 
-## con el logo, siempre vuelves al index
+## URL : http://localhost/public/index.php
+
+*** Pulsando el logo siempre vuelves al index
+
+
