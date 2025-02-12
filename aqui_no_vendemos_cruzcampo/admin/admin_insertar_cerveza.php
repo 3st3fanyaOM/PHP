@@ -67,7 +67,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Insertar en base de datos si no hay errores
     if (empty($errores)) {
-        $alergenos_str = json_encode($alergenos);
+        $alergenos_str = implode(", ", $alergenos);
         $sql = "INSERT INTO cervezas (denominacion, marca, tipo, formato, tamanio, alergenos, fecha, foto, precio, observaciones)
                 VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         $stmt = $conn->prepare($sql);
