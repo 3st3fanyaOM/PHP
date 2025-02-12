@@ -63,6 +63,27 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['action'])) {
         // Redirigir al carrito después de eliminar el producto
         header("Location: carrito.php");
         exit();
+    } elseif ($_POST['action'] == 'update') {
+        // Actualizar la cantidad de un producto en el carrito
+        $id_producto = $_POST['id_cerveza'];
+        $cantidad = intval($_POST['cantidad']);
+
+        // Buscar el producto en el carrito
+        foreach ($_SESSION['carrito'] as &$producto) {
+            if ($producto['id'] == $id_producto) {
+                if ($cantidad > 0) {
+                    $producto['cantidad'] = $cantidad; // Actualizar la cantidad
+                } else {
+                    // Si la cantidad es 0, eliminar el producto del carrito
+                    unset($_SESSION['carrito'][$key]);
+                }
+                break;
+            }
+        }
+
+        // Redirigir al carrito después de actualizar la cantidad
+        header("Location: carrito.php");
+        exit();
     }
 }
 ?>
@@ -87,7 +108,7 @@ if (!isset($_SESSION['carrito']) || empty($_SESSION['carrito'])) {
         <tbody>";
 
     $total = 0;
-    foreach ($_SESSION['carrito'] as $producto) {
+    foreach ($_SESSION['carrito'] as $key => $producto) {
         $subtotal = $producto['precio'] * $producto['cantidad'];
         $total += $subtotal;
         $_SESSION['total'] = $total;
@@ -95,10 +116,17 @@ if (!isset($_SESSION['carrito']) || empty($_SESSION['carrito'])) {
         echo "<tr>
             <td>{$producto['nombre']}</td>
             <td>{$producto['precio']}€</td>
-            <td>{$producto['cantidad']}</td>
+            <td>
+                <form action='carrito.php' method='POST' style='display:inline;'>
+                    <input type='hidden' name='id_cerveza' value='{$producto['id']}'>
+                    <input type='hidden' name='action' value='update'>
+                    <input type='number' name='cantidad' value='{$producto['cantidad']}' min='1' style='width: 50px;'>
+                    <button type='submit'>Actualizar</button>
+                </form>
+            </td>
             <td>{$subtotal}€</td>
             <td>
-                <form action='carrito.php' method='POST'>
+                <form action='carrito.php' method='POST' style='display:inline;'>
                     <input type='hidden' name='id_cerveza' value='{$producto['id']}'>
                     <input type='hidden' name='action' value='remove'>
                     <button type='submit'>Eliminar</button>

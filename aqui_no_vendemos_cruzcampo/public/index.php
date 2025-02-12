@@ -41,7 +41,7 @@ $result = $conn->query($sql);
           </a>
         </div>
         <div class="nav-links">
-          <a href="carrito.php" class="login-btn">
+          <a href="login.php" class="login-btn">
             <i class="fas fa-shopping-cart"></i>Carrito
           </a>
         </div>
