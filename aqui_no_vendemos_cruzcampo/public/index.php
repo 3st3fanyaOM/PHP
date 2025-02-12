@@ -36,6 +36,11 @@ $result = $conn->query($sql);
           </a>
         </div>
         <div class="nav-links">
+          <a href="buscador_cervezas.php">
+          <i class="fa-solid fa-magnifying-glass"></i>Buscar Cerveza
+          </a>
+        </div>
+        <div class="nav-links">
           <a href="carrito.php" class="login-btn">
             <i class="fas fa-shopping-cart"></i>Carrito
           </a>
@@ -86,16 +91,9 @@ $result = $conn->query($sql);
         ?>
     </tbody>
 </table>
-<footer>
-      <p>
-        © Tienda de cervezas. Todos los derechos reservados |
-        <a href="#" target="_blank">Aviso Legal</a> |
-        <a href="#" target="_blank">Buzón de sugerencias</a>
-      </p>
-    </footer>
-</body>
-</html>
+
 
 <?php
+include '../includes/footer.php';
 $conn->close();
 ?>
