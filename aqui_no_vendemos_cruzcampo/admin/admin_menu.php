@@ -5,4 +5,4 @@
       <li><a href="../admin/admin_insertar_cerveza.php">Insertar cerveza</a></li>
       <li><a href="../admin/admin_listar.php">Listar cervezas</a></li>
     </ol>
-    <?php include '../includes/footer.php'; ?>
+<?php include '../includes/footer.php'; ?>

@@ -45,6 +45,6 @@ include '../includes/footer.php';
 } else {
 echo "No se encontraron cervezas en la base de datos.";
 }
-
+//cerrar conex
 $conn->close();
 ?>

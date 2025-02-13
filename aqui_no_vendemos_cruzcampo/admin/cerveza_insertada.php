@@ -1,5 +1,5 @@
-
 <?php 
+//cerveza insertada
 include '../includes/header.php';
     echo "<p style='color:blue;'>Cerveza registrada con éxito.</p>";
     echo "<p> [<a href='admin_insertar_cerveza.php'>Insertar otra cerveza</a>]</p>";

@@ -9,7 +9,7 @@ $_SESSION = array();
 // Destruir la sesión
 session_destroy();
 
-// Redirigir al usuario a la página de inicio de sesión o a la página principal
-header("Location: ../public/index.php"); // Cambia "login.php" por la página que desees
+// Redirigir al usuario a página principal
+header("Location: ../public/index.php");
 exit();
 ?>

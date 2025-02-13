@@ -90,6 +90,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 include '../includes/header.php';
 ?>
 
+<!--formulario de inserción-->
 <h1 style="text-align:center">Inserción de cervezas</h1>
 <div class="container">
     <form class="product-form" action="admin_insertar_cerveza.php" method="POST" enctype="multipart/form-data" id="cervezaForm">

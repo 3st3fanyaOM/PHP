@@ -5,7 +5,7 @@ include("../includes/conexion.php");
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
 
-    // Preparar la consulta para obtener los datos de la cerveza
+    // consulta
     $sql = "SELECT id_cerveza, tipo, marca FROM cervezas WHERE id_cerveza = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("i", $id);
@@ -14,9 +14,9 @@ if (isset($_GET['id'])) {
     $cerveza = $result->fetch_assoc();
 
     if ($cerveza) {
-        // Si el formulario se ha enviado para confirmar la eliminación
+        //confirmar la eliminación
         if (isset($_POST['confirmar']) && $_POST['confirmar'] == 'yes') {
-            // Preparar la consulta para eliminar la cerveza
+            //consulta para eliminar la cerveza
             $sql_delete = "DELETE FROM cervezas WHERE id_cerveza = ?";
             $stmt_delete = $conn->prepare($sql_delete);
             $stmt_delete->bind_param("i", $id);
@@ -52,7 +52,7 @@ if (isset($_GET['id'])) {
         echo "Cerveza no encontrada.";
     }
 
-    // Cerrar la sentencia
+
     $stmt->close();
 }
 
