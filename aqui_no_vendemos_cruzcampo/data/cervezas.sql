@@ -2,8 +2,8 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1:3307
--- Tiempo de generación: 11-02-2025 a las 15:09:51
+-- Servidor: localhost:3307
+-- Tiempo de generación: 13-02-2025 a las 11:23:08
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -46,10 +46,10 @@ CREATE TABLE `cervezas` (
 --
 
 INSERT INTO `cervezas` (`id_cerveza`, `denominacion`, `marca`, `tipo`, `formato`, `tamanio`, `alergenos`, `fecha`, `foto`, `precio`, `observaciones`) VALUES
-(2, 'cerveza', 'Alhambra', 'rubia', 'botella', 'tercio', 'Sin alérgenos', '2025-02-19', 'uploads/alhambra.jpg', 3, 'la mejor cerveza'),
-(3, 'Vol Damm', 'DAM', 'lager', 'botella', 'tercio', 'Cacahuete, Sulfitos, Huevo', '2025-02-25', 'uploads/damm.jpg', 4, 'MUCHO alcohol'),
-(4, 'Artesana', 'Alhambra', 'rubia', 'lata', 'pack', 'Huevo', '2025-02-24', 'uploads/estrella.jpeg', 2, 'servir muy fria'),
-(5, 'Sierra Nevada', 'Alhambra', 'pale ale', 'botella', 'tercio', '[\"Gluten\"]', '2025-12-19', 'uploads/paleale.jpg', 5, 'cerveza con toque de uva');
+(9, 'cerveza', 'Heineken', 'rubia', 'botella', 'tercio', 'Gluten', '2025-02-28', 'uploads/Heineken_Flasche_0.33.jpg', 1, 'servir muy fría'),
+(10, 'cerveza', 'Estrella Galicia', 'lager', 'botella', 'tercio', 'Sin alérgenos', '2025-02-17', 'uploads/images.jpeg', 1, 'cerveza para el fin de semana'),
+(11, 'cerveza', 'Mahou', 'pale ale', 'lata', 'media', 'Cacahuete, Soja', '2025-02-18', 'uploads/0000337_33119_600.jpeg', 1, 'cerveza para pasar la tarde de jueves'),
+(12, 'cerveza', 'Alhambra', 'pale ale', 'botella', 'tercio', 'Sin alérgenos', '2025-02-10', 'uploads/alhambra.jpg', 1, 'cerveza EXCEPCIONAL');
 
 --
 -- Índices para tablas volcadas
@@ -69,7 +69,7 @@ ALTER TABLE `cervezas`
 -- AUTO_INCREMENT de la tabla `cervezas`
 --
 ALTER TABLE `cervezas`
-  MODIFY `id_cerveza` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_cerveza` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
